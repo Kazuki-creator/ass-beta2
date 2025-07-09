@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AI支援システム</title>
+  <link rel="stylesheet" href="./style.css" />
+  <script defer src="./script.js"></script>
+  
+</head>
+<body>
+  <!-- ヘッダー -->
+  <header class="header">
+    <div class="logo">
+      <img src="https://cdn.glitch.global/d6b52f0f-967d-4d53-8d7f-3cfb840bae62/AI%20Supprot%20System%20(1000%20x%20200%20px).png?v=1740035748637"
+           alt="AI Support System Logo" />
+    </div>
+  </header>
+
+  <div class="container">
+    <!-- サイドバー読み込み -->
+    <div id="sidebar-container"></div>
+    <!-- ↓ここだけを入れ替え（インライン fetch を消して loader を読む） -->
+    <script defer src="/sidebar-loader.js"></script>
+
+    <main class="content">
+      <h1>AI支援システム</h1>
+      <p>
+        このシステムはAIがあなたのパートナービジネスを支援するシステムです。<br>
+        以下の項目から支援してほしいテーマを選んでください。
+      </p>
+
+      <div class="items-container">
+        <!-- コーチング支援 -->
+        <a href="coaching/goal-setting.html" class="item" data-category="coaching" data-feature="goal-setting">
+          <h3>目標設定</h3>
+          <p>ユーザーの価値観やビジョンを<br>もとに目標を設定します。</p>
+        </a>
+        <a href="coaching/action-plan.html" class="item" data-category="coaching" data-feature="action-plan">
+          <h3>行動計画</h3>
+          <p>目標達成のための具体的な<br/>行動ステップを計画します。</p>
+        </a>
+        <a href="coaching/pre-survey.html" class="item" data-category="coaching" data-feature="pre-survey">
+          <h3>事前アンケートの見立て</h3>
+          <p>アンケート結果を分析し、<br/>改善ポイントを明確にします。</p>
+        </a>
+        <a href="coaching/session-assist.html" class="item" data-category="coaching" data-feature="session-assist">
+          <h3>本セッションアシスト</h3>
+          <p>クライアントとの本セッションの<br>見立てをサポートしてくれます。</p>
+        </a>
+        <a href="coaching/daily-feedback.html" class="item" data-category="coaching" data-feature="daily-feedback">
+          <h3>日報フィードバック</h3>
+          <p>今日の振り返りから明日へ向けた<br>フィードバックをAIからもらえます。</p>
+        </a>
+        
+        <!-- マーケティング支援 -->
+        <a href="marketing/appointment-copy.html" class="item" data-category="marketing" data-feature="appointment-copy">
+          <h3>アポイント獲得</h3>
+          <p>効果的なライティングで<br/>アポイント獲得を支援します。</p>
+        </a>
+        <a href="marketing/persona.html" class="item" data-category="marketing" data-feature="persona">
+          <h3>ペルソナ選定</h3>
+          <p>ターゲットとなる理想的な<br/>顧客像を明確にします。</p>
+        </a>
+        <a href="marketing/concept-design.html" class="item" data-category="marketing" data-feature="concept-design">
+          <h3>コンセプト設計</h3>
+          <p>ターゲットなどを基に効果的な<br/>商品コンセプトを構築します。</p>
+        </a>
+        <a href="marketing/catchphrase.html" class="item" data-category="marketing" data-feature="catchphrase">
+          <h3>キャッチコピー作成</h3>
+          <p>商品の魅力を最大限に伝える<br/>キャッチコピーを作成します。</p>
+        </a>
+        <a href="marketing/profile-copy.html" class="item beta" data-category="marketing" data-feature="profile-copy">
+          <h3>プロフィール作成</h3>
+          <p>ターゲットに安心感と権威性を示す<br>プロフィールコピーを作成します。</p>
+        </a>
+        <a href="marketing/lp-session.html" class="item beta" data-category="marketing" data-feature="lp-session">
+          <h3>LP作成（FS）</h3>
+          <p>ターゲットをFSへ誘導する<br/>LPのコピーを作成します。</p>
+        </a>
+        <a href="coming-soon.html" class="item beta" data-category="marketing" data-feature="email-copy">
+          <h3>メール作成（β版）</h3>
+          <p>今後リリース予定の機能です。</p>
+        </a>
+        <a href="coming-soon.html" class="item beta" data-category="marketing" data-feature="product-development">
+          <h3>商品開発（β版）</h3>
+          <p>今後リリース予定の機能です。</p>
+        </a>
+        <!-- セミナー支援 -->
+        <a href="seminar/seminar-structure.html" class="item" data-category="seminar" data-feature="seminar-structure">
+          <h3>セミナー構成</h3>
+          <p>セミナーの流れと内容を計画し、<br/>成功に導きます。</p>
+        </a>
+        <a href="seminar/seminar-title.html" class="item" data-category="seminar" data-feature="seminar-title">
+          <h3>セミナータイトル</h3>
+          <p>受講者を惹きつける<br/>タイトルを提案します。</p>
+        </a>
+        <a href="seminar/seminar-post.html" class="item" data-category="seminar" data-feature="seminar-post">
+          <h3>セミナー投稿文</h3>
+          <p>受講者に魅力を伝えるための<br/>投稿文を作成します。</p>
+        </a>
+        <a href="seminar/step-mail.html" class="item" data-category="seminar" data-feature="step-mail">
+          <h3>ステップメール</h3>
+          <p>セミナー参加予定者の来場率を<br/>高めるメールを作成します。</p>
+        </a>
+
+        <!-- SNS支援 -->
+        <a href="sns/feed-post.html" class="item" data-category="sns" data-feature="feed-post">
+          <h3>フィード投稿</h3>
+          <p>エンゲージメントを高める<br/>投稿内容を提案します。</p>
+        </a>
+        <a href="sns/free-content.html" class="item" data-category="sns" data-feature="free-content">
+          <h3>フリーコンテンツ</h3>
+          <p>価値ある無料コンテンツで<br/>リード獲得を支援します。</p>
+        </a>
+        <a href="sns/sns-seminar-post.html" class="item" data-category="sns" data-feature="sns-seminar-post">
+          <h3>セミナー投稿文（SNS用）</h3>
+          <p>SNSのフォロワーにセミナーの<br/>告知メッセージを提案します。</p>
+        </a>
+        <a href="sns/video-script.html" class="item beta" data-category="sns" data-feature="video-script">
+          <h3>動画台本（β版）</h3>
+          <p>今後リリース予定の機能です。</p>
+        </a>
+        <a href="sns/line-step-mail.html" class="item beta" data-category="sns" data-feature="line-step-mail">
+          <h3>LINEステップメール（β版）</h3>
+          <p>今後リリース予定の機能です。</p>
+        </a>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

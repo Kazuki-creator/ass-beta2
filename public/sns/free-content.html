@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <link rel="prefetch" href="../sidebar.html">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>フリーコンテンツ作成</title>
+  <link rel="stylesheet" href="../style.css">
+  <script defer src="/sidebar-loader.js"></script>
+  <script type="module" src="./free-content.js"></script>
+</head>
+<body>
+  <!-- 共通ヘッダー -->
+  <header class="header">
+    <div class="logo">
+      <img src="https://cdn.glitch.global/d6b52f0f-967d-4d53-8d7f-3cfb840bae62/AI%20Supprot%20System%20(1000%20x%20200%20px).png?v=1740035748637" alt="AI Support System Logo">
+    </div>
+  </header>
+
+  <div class="container">
+    <!-- 共通サイドバー -->
+    <div id="sidebar-container"></div>
+    
+    <!-- メインコンテンツ -->
+    <main class="content">
+      <div class="main-container">
+        <h1>【フリーコンテンツ作成】</h1>
+        <p>ユーザーからの入力情報を元に、ペルソナが「思わず受け取りたくなる」魅力的なフリーコンテンツ案を作成します。</p>
+        
+        <!-- 入力フォーム -->
+        <form id="free-content-form">
+          <label for="content">
+            ① 商品やサービスの内容
+          </label>
+          <textarea id="content" rows="2" placeholder="例：20代のキャリアに悩む人に向けた自己理解キャリアコーチング"></textarea>
+          <br><br>
+          
+          <label for="persona">
+            ② ペルソナの詳細（年齢・性別・どんな悩みを持っているか）
+          </label>
+          <textarea id="persona" rows="2" placeholder="例：27歳女性会社員。今の働き方にモヤモヤしているが、何がしたいか分からない"></textarea>
+          <br><br>
+          
+          <label for="story">
+            ③ ユーザー自身のキャラクターやストーリー
+          </label>
+          <textarea id="story" rows="2" placeholder="例：自分も同じように悩んでいた経験があり、そこから自分の強みを活かした仕事に出会えた"></textarea>
+          <br><br>
+          
+          <label for="snsMessage">
+            ④ SNSで届けたいメッセージや世界観
+          </label>
+          <textarea id="snsMessage" rows="2" placeholder="例：本当のあなたを知ることが、人生を変える第一歩"></textarea>
+          <br><br>
+          
+          <div class="button-container">
+            <button type="submit" id="free-content-submit-btn" class="analyze-button">フリーコンテンツを作る！</button>
+          </div>
+        </form>
+        
+        <!-- 進捗バー -->
+        <div class="progress-container">
+          <div class="progress-steps">
+            <div class="progress-bar">
+              <div class="progress-bar-fill" id="progress-fill"></div>
+            </div>
+            <div class="progress-step" id="step-1">
+              <div class="step-dot"></div>
+              <div class="step-label">データ解析</div>
+            </div>
+            <div class="progress-step" id="step-2">
+              <div class="step-dot"></div>
+              <div class="step-label">コンテンツ案作成</div>
+            </div>
+            <div class="progress-step" id="step-3">
+              <div class="step-dot"></div>
+              <div class="step-label">最適化</div>
+            </div>
+            <div class="progress-step" id="step-4">
+              <div class="step-dot"></div>
+              <div class="step-label">完了</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 出力結果 -->
+        <div id="output-container" style="display: none;">
+          <h3>生成されたフリーコンテンツ案</h3>
+          <div id="output"></div>
+          <!-- クリップボードコピー用コンテナ -->
+          <div class="clipboard-container" style="display: none;">
+            <button class="copy-button" id="copy-btn">クリップボードにコピーする</button>
+            <div class="copy-success" id="copy-success">コピーしました！</div>
+          </div>
+        </div>
+
+        <!-- メインページへ戻るボタン（常に表示） -->
+        <div class="main-return-button-area">
+          <a href="#" id="return-home" class="main-return-button">メインページへ戻る</a>
+        </div>
+        
+      </div>
+    </main>
+  </div>
+</body>
+</html>

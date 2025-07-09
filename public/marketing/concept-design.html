@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>コンセプト設計</title>
+  <link rel="stylesheet" href="../style.css">
+  <script type="module" src="./concept-design.js"></script>
+</head>
+<body>
+  <!-- ヘッダー -->
+  <header class="header">
+    <div class="logo">
+      <img src="https://cdn.glitch.global/d6b52f0f-967d-4d53-8d7f-3cfb840bae62/AI%20Supprot%20System%20(1000%20x%20200%20px).png?v=1740035748637" alt="AI Support System Logo">
+    </div>
+  </header>
+
+  <div class="container">
+    <div id="sidebar-container"></div>
+    <script defer src="/sidebar-loader.js"></script>
+    <main class="content">
+      <div class="main-container">
+        <h1>【コンセプト設計】</h1>
+        <p>
+          ターゲットや商品・サービスの内容を元に、効果的なコンセプトを作成します。
+          以下の項目を全て入力してください。
+        </p>
+        <form id="concept-design-form">
+          <label for="target">①ターゲット（顧客はどんな人か？）</label>
+          <textarea id="target" placeholder="例: 20代後半の働く女性"></textarea>
+          <label for="idealState">②ターゲットの理想の状態</label>
+          <textarea id="idealState" placeholder="例: 自分らしく充実したライフスタイルを実現"></textarea>
+          <label for="value">③商品・サービスで提供する価値・ベネフィット</label>
+          <textarea id="value" placeholder="例: 手軽に美容と健康をサポートする"></textarea>
+          <label for="productName">④商品・サービス名</label>
+          <textarea id="productName" placeholder="例: ビューティーサポートPro"></textarea>
+          <label for="features">⑤サービス提供方法・特徴</label>
+          <textarea id="features" placeholder="例: オンラインでのパーソナライズ診断と提案"></textarea>
+          <label for="brandImage">⑥世界観・ブランドイメージ</label>
+          <textarea id="brandImage" placeholder="例:
+-フレーズ：「もっと自分らしく輝ける」「今の私に、最高の未来を」
+-イメージカラー：ホワイト、グリーン、淡いブルー
+-世界観：ここに来れば確実に成長できる場所"></textarea>
+          <div class="button-container">
+            <button id="concept-design-submit-btn" class="button analyze-button">コンセプトを作る！</button>
+          </div>
+        </form>
+        <div class="progress-container">
+          <div class="progress-steps">
+            <div class="progress-bar">
+              <div class="progress-bar-fill" id="progress-fill"></div>
+            </div>
+            <div class="progress-step" id="step-1"><div class="step-dot"></div><div class="step-label">データ解析</div></div>
+            <div class="progress-step" id="step-2"><div class="step-dot"></div><div class="step-label">コンセプト作成</div></div>
+            <div class="progress-step" id="step-3"><div class="step-dot"></div><div class="step-label">最適化</div></div>
+            <div class="progress-step" id="step-4"><div class="step-dot"></div><div class="step-label">完了</div></div>
+          </div>
+        </div>
+        <div id="output-container" style="display: none;">
+          <h3>生成されたコンセプト設計</h3>
+          <div id="output"></div>
+          <div class="clipboard-container" style="margin-top:1em;">
+            <button class="copy-button" id="copy-btn">クリップボードにコピーする</button>
+            <span class="copy-success" id="copy-success" style="display:none; margin-left: 1em; color:#8bc34a;">コピーしました！</span>
+          </div>
+        </div>
+        <div class="main-return-button-area">
+          <a href="#" id="return-home" class="main-return-button">メインページへ戻る</a>
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

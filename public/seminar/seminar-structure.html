@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>セミナー構成作成</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="prefetch" href="../sidebar.html">
+  <script defer src="/sidebar-loader.js"></script>
+  <script type="module" src="./seminar-structure.js"></script>
+</head>
+<body>
+  <!-- 共通ヘッダー -->
+  <header class="header">
+    <div class="logo">
+      <img src="https://cdn.glitch.global/d6b52f0f-967d-4d53-8d7f-3cfb840bae62/AI%20Supprot%20System%20(1000%20x%20200%20px).png?v=1740035748637" alt="AI Support System Logo">
+    </div>
+  </header>
+
+  <div class="container">
+    <!-- 共通サイドバー -->
+    <div id="sidebar-container"></div>
+    
+    <!-- メインコンテンツ -->
+    <main class="content">
+      <div class="main-container">
+        <h1>【セミナー構成作成】</h1>
+        <p>商品・サービスを販売するための魅力的なセミナー構成を作成しましょう。</p>
+        
+        <!-- 入力フォーム -->
+        <form id="seminar-structure-form">
+          <label for="desiredAction">
+            ① セミナーに参加した人が、最終的にどのような行動を取ることを狙っているのか記入してください<br>
+            (例：個別相談会への申込、商品購入、コミュニティ入会など)
+          </label>
+          <textarea id="desiredAction" rows="2" placeholder="ここに回答を入力"></textarea>
+          <br><br>
+          <label for="targetAttributes">
+            ② ターゲットの具体的な属性と、現在抱えている悩み・課題・ニーズを詳しく記入してください
+          </label>
+          <textarea id="targetAttributes" rows="2" placeholder="例：27歳・男性・会社員・年収400万円・東京都在住、今の職場に将来性が感じられず…"></textarea>
+          <br><br>
+          <label for="theme">
+            ③ セミナーで具体的にどのようなテーマや内容を扱いたいかを記入してください
+          </label>
+          <textarea id="theme" rows="2" placeholder="例：目標を持つことの大切さ、効果的なキャリアアップ法、人生100年時代など"></textarea>
+          <br><br>
+          <label for="benefit">
+            ④ ターゲットがセミナーに参加すると得られる具体的なメリットや成果、体験を記入してください
+          </label>
+          <textarea id="benefit" rows="2" placeholder="例：転職や昇進を実現する具体的なスキルが身につき、自信をもって行動できるようになる"></textarea>
+          <br><br>
+          <label for="uniquePoint">
+            ⑤ 他の類似セミナーや商品に比べて特に優れている点、独自の手法、講師の権威性、実績などを記入してください
+          </label>
+          <textarea id="uniquePoint" rows="2" placeholder="例：キャリアコンサルタントの資格保有、月商300万円達成"></textarea>
+          <br><br>
+          <label for="atmosphere">
+            ⑥ セミナーや集客時に表現したい雰囲気を記入してください<br>
+          </label>
+          <textarea id="atmosphere" rows="2" placeholder="(例：上昇志向が強く、アカデミックで健全、真摯で信頼感のあるトーン)"></textarea>
+          <br><br>
+          <label for="format">
+            ⑦ 想定する開催形式・状況を教えてください<br>
+          </label>
+          <textarea id="format" rows="2" placeholder="(例：オンラインZoom開催、90分、参加費無料)"></textarea>
+          <br><br>
+          <label for="avoidance">
+            ⑧ 構成内容で避けたい表現や禁止事項（あれば）を記入してください
+          </label>
+          <textarea id="avoidance" rows="2" placeholder="例：特定の職種や業界に偏った表現は避ける"></textarea>
+          <br><br>
+          <button type="submit" id="seminar-structure-submit-btn" class="analyze-button">セミナー構成を作る！</button>
+        </form>
+        
+        <!-- 進捗バー -->
+        <div class="progress-container">
+          <div class="progress-steps">
+            <div class="progress-bar">
+              <div class="progress-bar-fill" id="progress-fill"></div>
+            </div>
+            <div class="progress-step" id="step-1">
+              <div class="step-dot"></div>
+              <div class="step-label">データ解析</div>
+            </div>
+            <div class="progress-step" id="step-2">
+              <div class="step-dot"></div>
+              <div class="step-label">構成案作成</div>
+            </div>
+            <div class="progress-step" id="step-3">
+              <div class="step-dot"></div>
+              <div class="step-label">最適化</div>
+            </div>
+            <div class="progress-step" id="step-4">
+              <div class="step-dot"></div>
+              <div class="step-label">完了</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 出力結果 -->
+        <div id="output-container" style="display: none;">
+          <h3>生成されたセミナー構成</h3>
+          <div id="output"></div>
+          <div class="clipboard-container" style="margin-top:1em;">
+            <button class="copy-button" id="copy-btn">クリップボードにコピーする</button>
+            <span class="copy-success" id="copy-success" style="display:none; margin-left: 1em; color:#8bc34a;">コピーしました！</span>
+          </div>
+        </div>
+
+        <!-- メインページに戻るボタン -->
+        <div class="main-return-button-area">
+          <a href="#" id="return-home" class="main-return-button">メインページへ戻る</a>
+        </div>    
+        
+      </div>
+    </main>
+  </div>
+</body>
+</html>

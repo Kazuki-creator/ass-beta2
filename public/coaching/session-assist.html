@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>本セッションアシスト</title>
+  <script type="module" src="./session-assist.js"></script>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <!-- ヘッダー -->
+  <header class="header">
+    <div class="logo">
+      <img src="https://cdn.glitch.global/d6b52f0f-967d-4d53-8d7f-3cfb840bae62/AI%20Supprot%20System%20(1000%20x%20200%20px).png?v=1740035748637" alt="AI Support System Logo">
+    </div>
+  </header>
+
+  <div class="container">
+    <!-- サイドバー -->
+    <div id="sidebar-container"></div>
+    <script defer src="/sidebar-loader.js"></script>
+
+    <main class="content">
+      <div class="main-container">
+        <h1>【本セッションアシスト】</h1>
+        <p>クライアントの目標達成を最大限に支援する「本セッション」の進行案をAIがご提案します。</p>
+        
+        <form id="session-assist-form">
+          <label for="goal">①クライアントの目標＋期日</label>
+          <textarea id="goal" placeholder="例：2025.8.31までに月収50万円、半年間で体重−8kgなど"></textarea>
+
+          <label for="belief">②クライアントが抱いていそうなリミティングビリーフ</label>
+          <textarea id="belief" placeholder="例：営業トークに自信がない、時間管理が下手、家族から反対を受けそう"></textarea>
+
+          <label for="status">③ここ1週間のクライアントの状態（1〜10で）</label>
+          <textarea id="status" placeholder="例：7"></textarea>
+
+          <label for="actions">④実際にクライアントが行った行動（複数件OK）</label>
+          <textarea id="actions" placeholder="例：6/12 ポートフォリオ更新、6/14 営業メール5通送信、6/15 SNS投稿1件"></textarea>
+
+          <label for="result">⑤最新実績数字</label>
+          <textarea id="result" placeholder="例：今月売上15万円、現在体重70kg"></textarea>
+
+          <label for="resources">⑥目標達成に向けてその人が使えるリソースの予測（時間、人脈、お金など）</label>
+          <textarea id="resources" placeholder="例：時間は毎日2時間、コネの強い社長が1名、貯金50万円"></textarea>
+
+          <label for="homework">⑦宿題達成度</label>
+          <textarea id="homework" placeholder="例：◎ 営業リスト作成完了／△ 半分まで／✕ 手付かず"></textarea>
+
+          <label for="note">⑧その他補足情報（任意）</label>
+          <textarea id="note" placeholder="例：目標にしっくり来てなさそう、親族が亡くなった、前も途中で投げ出した等"></textarea>
+          
+          <div class="button-container">
+            <button id="session-assist-submit-btn" class="button analyze-button">本セッション案を作る！</button>
+          </div>
+        </form>
+
+        <!-- 進捗バー -->
+        <div class="progress-container">
+          <div class="progress-steps">
+            <div class="progress-bar">
+              <div class="progress-bar-fill" id="progress-fill"></div>
+            </div>
+            <div class="progress-step" id="step-1"><div class="step-dot"></div><div class="step-label">データ解析</div></div>
+            <div class="progress-step" id="step-2"><div class="step-dot"></div><div class="step-label">セッション設計</div></div>
+            <div class="progress-step" id="step-3"><div class="step-dot"></div><div class="step-label">最適化</div></div>
+            <div class="progress-step" id="step-4"><div class="step-dot"></div><div class="step-label">完了</div></div>
+          </div>
+        </div>
+
+        <!-- 出力結果 -->
+        <div id="output-container" style="display: none;">
+          <h3>生成された本セッション台本</h3>
+          <div id="output"></div>
+          <div class="clipboard-container" style="margin-top:1em;">
+            <button class="copy-button" id="copy-btn">クリップボードにコピーする</button>
+            <span class="copy-success" id="copy-success" style="display:none; margin-left: 1em; color:#8bc34a;">コピーしました！</span>
+          </div>
+        </div>
+
+        <!-- メインページに戻るボタン -->
+        <div class="main-return-button-area">
+          <a href="#" id="return-home" class="main-return-button">メインページへ戻る</a>
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

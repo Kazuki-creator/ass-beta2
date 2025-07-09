@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>アポイント獲得コピー</title>
+  <link rel="prefetch" href="../sidebar.html">
+  <script type="module" src="./appointment-copy.js"></script>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <!-- ヘッダー -->
+  <header class="header">
+    <div class="logo">
+      <img src="https://cdn.glitch.global/d6b52f0f-967d-4d53-8d7f-3cfb840bae62/AI%20Supprot%20System%20(1000%20x%20200%20px).png?v=1740035748637" alt="AI Support System Logo">
+    </div>
+  </header>
+
+  <div class="container">
+    <!-- サイドバー -->
+    <div id="sidebar-container"></div>
+    <script defer src="/sidebar-loader.js"></script>
+
+    <main class="content">
+      <div class="main-container">
+        <h1>【アポイント獲得コピー】</h1>
+        <p>見込み客へ効果的なアポイントを獲得するためのコピーライティングを作成しましょう。</p>
+        
+        <!-- 入力フォーム -->
+        <form id="appointment-copy-form">
+          <label for="age">① 見込み客の年齢を教えてください</label>
+          <textarea id="age" rows="2" placeholder="例: 30代前半"></textarea>
+          <br><br>
+          <label for="gender">② 見込み客の性別を教えてください</label>
+          <textarea id="gender" rows="2" placeholder="例: 女性"></textarea>
+          <br><br>
+          <label for="family">③ 見込み客の家族構成を教えてください</label>
+          <textarea id="family" rows="2" placeholder="例: 妻と子供2人"></textarea>
+          <br><br>
+          <label for="occupation">④ 見込み客の現在の職業、何年目か、前職など</label>
+          <textarea id="occupation" rows="2" placeholder="例: 保育士5年目（前職は教師）"></textarea>
+          <br><br>
+          <label for="relationship">⑤ あなたとの関係性について教えてください</label>
+          <textarea id="relationship" rows="2" placeholder="例: 同僚、友人、恩師など"></textarea>
+          <br><br>
+          <label for="meetingFrequency">⑥ お会いする頻度はどのくらいですか？</label>
+          <textarea id="meetingFrequency" rows="2" placeholder="例: 先月も会いました"></textarea>
+          <br><br>
+          <label for="lastMeeting">⑦ 前回お会いしたのはいつですか？</label>
+          <textarea id="lastMeeting" rows="2" placeholder="例: 2023/12/01"></textarea>
+          <br><br>
+          <label for="distance">⑧ あなたとの距離感を教えてください</label>
+          <textarea id="distance" rows="2" placeholder="例: 気軽に連絡し合える仲"></textarea>
+          <br><br>
+          <label for="trigger">⑨ 今回なぜアポイントを取ろうと思ったのですか？</label>
+          <textarea id="trigger" rows="2" placeholder="例: 最近の出来事をきっかけに"></textarea>
+          <br><br>
+          <div class="button-container">
+            <button type="submit" id="appointment-copy-submit-btn" class="button analyze-button">アポイント獲得コピーを作る！</button>
+          </div>
+        </form>
+        
+        <!-- 進捗バー -->
+        <div class="progress-container">
+          <div class="progress-steps">
+            <div class="progress-bar">
+              <div class="progress-bar-fill" id="progress-fill"></div>
+            </div>
+            <div class="progress-step" id="step-1"><div class="step-dot"></div><div class="step-label">データ解析</div></div>
+            <div class="progress-step" id="step-2"><div class="step-dot"></div><div class="step-label">コピー案作成</div></div>
+            <div class="progress-step" id="step-3"><div class="step-dot"></div><div class="step-label">最適化</div></div>
+            <div class="progress-step" id="step-4"><div class="step-dot"></div><div class="step-label">完了</div></div>
+          </div>
+        </div>
+
+        <!-- 出力結果 -->
+        <div id="output-container" style="display: none;">
+          <h3>生成されたアポイント獲得コピー</h3>
+          <div id="output"></div>
+          <div class="clipboard-container" style="margin-top:1em;">
+            <button class="copy-button" id="copy-btn">クリップボードにコピーする</button>
+            <span class="copy-success" id="copy-success" style="display:none; margin-left:1em; color:#8bc34a;">コピーしました！</span>
+          </div>
+        </div>
+
+        <!-- メインページに戻るボタン -->
+        <div class="main-return-button-area">
+          <a href="#" id="return-home" class="main-return-button">メインページへ戻る</a>
+        </div>  
+      </div>
+    </main>
+  </div>
+</body>
+</html>

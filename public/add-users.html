@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>管理者用：顧客情報追加</title>
+  <link rel="stylesheet" href="style.css">
+ </head>
+<body>
+  <!-- 共通ヘッダー -->
+  <header class="header">
+    <div class="logo">
+      <a href="index.html"><img src="https://cdn.glitch.global/d6b52f0f-967d-4d53-8d7f-3cfb840bae62/AI%20Supprot%20System%20(1000%20x%20200%20px).png?v=1740035748637" alt="AI Support System Logo"></a>
+    </div>
+  </header>
+
+  <div class="container">
+    <!-- 共通サイドバー -->
+    <div id="sidebar-container" class="sidebar"></div>
+    <script defer src="/sidebar-loader.js"></script>
+
+    <!-- メインコンテンツ -->
+    <main class="content">
+      <div class="main-container">
+        <!-- ページタイトル -->
+        <div class="page-header" style="margin-bottom:20px;">
+          <h1>管理者専用ページ</h1>
+        </div>
+
+        <!-- 入力フォームブロック -->
+        <section class="form-section">
+          <h2>顧客情報を入力</h2>
+          <form id="add-user-form">
+            <label for="user-id">ID</label>
+            <textarea id="user-id" rows="1" placeholder="例: user_001"></textarea>
+
+            <label for="user-name">名前</label>
+            <textarea id="user-name" rows="1" placeholder="例: 山田太郎"></textarea>
+
+            <label for="user-email">メールアドレス</label>
+            <textarea id="user-email" rows="1" placeholder="例: taro@example.com"></textarea>
+
+            <label for="user-plan">プラン</label>
+            <textarea id="user-plan" rows="1" placeholder="例: Basic, Pro"></textarea>
+
+            <label for="user-status">ステータス</label>
+            <textarea id="user-status" rows="1" placeholder="例: 無料プラン／継続中（月額）／退会済"></textarea>
+
+            <div class="button-container">
+              <button type="submit" id="add-btn" class="create-button">追加する</button>
+            </div>
+          </form>
+        </section>
+
+        <!-- 結果表示ブロック -->
+        <section class="message-section" style="margin-top:30px;">
+          <h2>結果</h2>
+          <div id="message-box" class="copy-success"></div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <script type="module">
+    document.getElementById('add-user-form').addEventListener('submit', async e => {
+      e.preventDefault();
+      const id = document.getElementById('user-id').value.trim();
+      const name = document.getElementById('user-name').value.trim();
+      const email = document.getElementById('user-email').value.trim();
+      const plan = document.getElementById('user-plan').value.trim();
+      const status = document.getElementById('user-status').value.trim();
+
+      if (!id || !name || !email || !plan || !status) {
+        alert('⚠️ 全ての項目を入力してください');
+        return;
+      }
+
+      try {
+        const res = await fetch('/api/users', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ id, name, email, plan, status })
+        });
+        if (!res.ok) throw new Error(`Error ${res.status}`);
+        const msg = document.getElementById('message-box');
+        msg.textContent = '✅ 顧客情報を追加しました';
+        msg.classList.add('show');
+      } catch (err) {
+        console.error(err);
+        const msg = document.getElementById('message-box');
+        msg.textContent = '❌ 追加に失敗しました';
+        msg.classList.add('show');
+      }
+    });
+  </script>
+</body>
+</html>

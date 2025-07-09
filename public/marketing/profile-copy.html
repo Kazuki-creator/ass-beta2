@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>講師紹介プロフィール作成</title>
+  <link rel="prefetch" href="../sidebar.html">
+  <script type="module" src="./profile-copy.js"></script>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <!-- ヘッダー -->
+  <header class="header">
+    <div class="logo">
+      <img src="https://cdn.glitch.global/d6b52f0f-967d-4d53-8d7f-3cfb840bae62/AI%20Supprot%20System%20(1000%20x%20200%20px).png?v=1740035748637" alt="AI Support System Logo">
+    </div>
+  </header>
+
+  <div class="container">
+    <!-- サイドバー -->
+    <div id="sidebar-container"></div>
+    <script defer src="/sidebar-loader.js"></script>
+
+    <main class="content">
+      <div class="main-container">
+        <h1>【講師紹介プロフィール作成】</h1>
+        <p>講座・コンサル販売用LPに掲載する講師紹介文（安心・信頼できる魅力的なコピー）を自動生成します。</p>
+        
+        <!-- 入力フォーム -->
+        <form id="profile-copy-form">
+          <label for="name">① 講師の名前</label>
+          <textarea id="name" rows="1" placeholder="例: 中村香月"></textarea>
+          <br><br>
+          <label for="expertise">② 講師の専門分野</label>
+          <textarea id="expertise" rows="2" placeholder="例: キャリアコンサルタント、教育DX"></textarea>
+          <br><br>
+          <label for="career">③ 講師の経歴・実績（具体的な数字やエピソード）</label>
+          <textarea id="career" rows="3" placeholder="例: 10年以上の指導経験。年商1億円の教育ビジネスを創業など"></textarea>
+          <br><br>
+          <label for="background">④これまでの苦悩や葛藤、活動の背景や想い</label>
+          <textarea id="background" rows="3" placeholder="例: 教育格差の現場を経験し、子どもたちに平等な機会を…"></textarea>
+          <br><br>
+          <label for="target">⑤ 想定ターゲット層（年齢・職業・悩みなど）</label>
+          <textarea id="target" rows="2" placeholder="例: 30～50代女性、働きながら学びたい方"></textarea>
+          <br><br>
+          <label for="additional">⑥ その他盛り込みたいポイント</label>
+          <textarea id="additional" rows="2" placeholder="例: 明るい雰囲気で親しみやすく、安心感を伝えたい"></textarea>
+          <div class="button-container">
+            <button type="submit" id="profile-copy-submit-btn" class="button analyze-button">講師プロフィールを作る！</button>
+          </div>
+        </form>
+        
+        <!-- 進捗バー -->
+        <div class="progress-container">
+          <div class="progress-steps">
+            <div class="progress-bar">
+              <div class="progress-bar-fill" id="progress-fill"></div>
+            </div>
+            <div class="progress-step" id="step-1"><div class="step-dot"></div><div class="step-label">情報解析</div></div>
+            <div class="progress-step" id="step-2"><div class="step-dot"></div><div class="step-label">原稿作成</div></div>
+            <div class="progress-step" id="step-3"><div class="step-dot"></div><div class="step-label">最適化</div></div>
+            <div class="progress-step" id="step-4"><div class="step-dot"></div><div class="step-label">完了</div></div>
+          </div>
+        </div>
+
+        <!-- 出力結果 -->
+        <div id="output-container" style="display: none;">
+          <h3>生成された講師プロフィール</h3>
+          <div id="output"></div>
+          <div class="clipboard-container" style="margin-top:1em;">
+            <button class="copy-button" id="copy-btn">クリップボードにコピーする</button>
+            <span class="copy-success" id="copy-success" style="display:none; margin-left:1em; color:#8bc34a;">コピーしました！</span>
+          </div>
+        </div>
+
+        <!-- メインページに戻るボタン -->
+        <div class="main-return-button-area">
+          <a href="#" id="return-home" class="main-return-button">メインページへ戻る</a>
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

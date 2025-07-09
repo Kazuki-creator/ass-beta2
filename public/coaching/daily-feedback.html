@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>日報フィードバック</title>
+  <script type="module" src="./daily-feedback.js"></script>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <!-- ヘッダー -->
+  <header class="header">
+    <div class="logo">
+      <img src="https://cdn.glitch.global/d6b52f0f-967d-4d53-8d7f-3cfb840bae62/AI%20Supprot%20System%20(1000%20x%20200%20px).png?v=1740035748637" alt="AI Support System Logo">
+    </div>
+  </header>
+
+  <div class="container">
+    <div id="sidebar-container"></div>
+    <script defer src="/sidebar-loader.js"></script>
+    <main class="content">
+      <div class="main-container">
+        <h1>【日報フィードバック】</h1>
+        <p>AIに日報を提出し、明日やるべきことのフィードバックをもらえます。<br>
+          今日あなたがやったことを整理し、明日のすべきことを洗い出しましょう！<br>
+          ※出力には時間がかかります。
+        </p>
+        <form id="daily-feedback-form">
+          <label for="goal">① 今のあなたの目標（いつまでに何を達成したいか）</label>
+          <textarea id="goal" placeholder="例: 6月30日までにクライアント10名獲得し、210万円の売り上げを作る。"></textarea>
+
+          <label for="todayActions">② 今日やったこと（行動を箇条書き）</label>
+          <textarea id="todayActions" placeholder="例: オファー3件、体験セッション1件"></textarea>
+
+          <label for="todayResult">③ これまで得た結果（体験セッション数、契約数、売上など）</label>
+          <textarea id="todayResult" placeholder="例: 体験セッション5件実施済、成約1件、売上27万円、FSアポあと3件"></textarea>
+
+          <label for="todayTrouble">④ 今日あったつまずきや課題</label>
+          <textarea id="todayTrouble" placeholder="例: どうやったら契約になるかわからなかった"></textarea>
+
+          <label for="tomorrowActions">⑤ 明日あなたがやること（明日やることのみ）</label>
+          <textarea id="tomorrowActions" placeholder="例: リストにオファー5件行う"></textarea>
+
+          <div class="button-container">
+            <button id="daily-feedback-submit-btn" class="button analyze-button">
+              日報を提出する
+            </button>
+          </div>
+          
+        </form>
+
+        <!-- 進捗バー -->
+        <div class="progress-container">
+          <div class="progress-steps">
+            <div class="progress-bar">
+              <div class="progress-bar-fill" id="progress-fill"></div>
+            </div>
+            <div class="progress-step" id="step-1"><div class="step-dot"></div><div class="step-label">データ解析</div></div>
+            <div class="progress-step" id="step-2"><div class="step-dot"></div><div class="step-label">内容理解</div></div>
+            <div class="progress-step" id="step-3"><div class="step-dot"></div><div class="step-label">フィードバック作成</div></div>
+            <div class="progress-step" id="step-4"><div class="step-dot"></div><div class="step-label">完了</div></div>
+          </div>
+        </div>
+
+        <!-- 出力結果 -->
+        <div id="output-container" style="display:none;">
+          <h3>AIによるフィードバック</h3>
+          <div id="output"></div>
+          <div class="clipboard-container" style="margin-top:1em;">
+            <button class="copy-button" id="copy-btn">クリップボードにコピーする</button>
+            <span class="copy-success" id="copy-success" style="display:none; margin-left: 1em; color:#8bc34a;">コピーしました！</span>
+          </div>
+        </div>
+
+        <div class="main-return-button-area">
+          <a href="#" id="return-home" class="main-return-button">メインページへ戻る</a>
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AIパイプライン処理</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* pipeline.html専用のスタイル */
+    body {
+      background-color: #1a1b2e;
+      color: #FFFFFF;
+      font-family: Arial, sans-serif;
+    }
+    
+    .main-container {
+      max-width: 1000px;
+      margin: 100px auto 30px;
+      padding: 30px;
+      background-color: #252A41;
+      border-radius: 12px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    }
+    
+    .header-text {
+      display: flex;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+    
+    .header-text h1 {
+      font-size: 2rem;
+      margin: 0;
+      margin-right: 15px;
+    }
+    
+    .header-text p {
+      margin: 0;
+      font-size: 1rem;
+      opacity: 0.8;
+    }
+    
+    .form-group {
+      margin-bottom: 30px;
+      display: flex;
+      gap: 10px;
+    }
+    
+    #user-input {
+      flex: 1;
+      padding: 15px;
+      border: none;
+      border-radius: 6px;
+      background-color: #1a1b2e;
+      color: #FFFFFF;
+      font-size: 16px;
+    }
+    
+    .button {
+      padding: 12px 25px;
+      background-color: #7B5DF5;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+      font-weight: bold;
+      text-decoration: none;
+      display: inline-block;
+      text-align: center;
+    }
+    
+    .button:hover {
+      background-color: #6344E0;
+    }
+    
+    /* 進捗表示 */
+    .progress-container {
+      margin: 30px 0;
+      background-color: #1F2236;
+      border-radius: 8px;
+      padding: 20px;
+    }
+    
+    .stage-indicators {
+      display: flex;
+      position: relative;
+      justify-content: space-between;
+    }
+    
+    .progress-bar {
+      position: absolute;
+      height: 4px;
+      background-color: #3D4267;
+      top: 23px;
+      left: 0;
+      right: 0;
+      z-index: 1;
+    }
+    
+    .progress-bar-fill {
+      position: absolute;
+      height: 4px;
+      background-color: #7B5DF5;
+      top: 0;
+      left: 0;
+      width: 0%;
+      transition: width 0.5s ease;
+      z-index: 2;
+    }
+    
+    .stage {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      z-index: 3;
+      width: 25%;
+    }
+    
+    .stage-dot {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background-color: #3D4267;
+      margin-bottom: 10px;
+      transition: background-color 0.3s;
+      border: 3px solid #1F2236;
+    }
+    
+    .stage-label {
+      font-size: 0.9rem;
+      text-align: center;
+      color: #8A8DB0;
+      transition: color 0.3s;
+      max-width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    
+    .stage.active .stage-dot {
+      background-color: #7B5DF5;
+      box-shadow: 0 0 10px rgba(123, 93, 245, 0.5);
+    }
+    
+    .stage.active .stage-label {
+      color: #FFFFFF;
+      font-weight: bold;
+    }
+    
+    .stage.completed .stage-dot {
+      background-color: #7B5DF5;
+    }
+    
+    .stage.completed .stage-label {
+      color: #FFFFFF;
+    }
+    
+    #status-message {
+      margin-top: 20px;
+      border-radius: 8px;
+      background-color: #1F2236;
+      padding: 20px;
+      min-height: 100px;
+    }
+    
+    #result-container {
+      margin-top: 30px;
+      display: none;
+    }
+    
+    #output-area {
+      width: 100%;
+      min-height: 300px;
+      background-color: #1a1b2e;
+      border: 1px solid #373A59;
+      color: white;
+      padding: 20px;
+      border-radius: 8px;
+      font-family: monospace;
+      margin-bottom: 15px;
+      white-space: pre-wrap;
+      resize: vertical;
+      overflow-x: hidden;
+      overflow-y: auto;
+      max-width: 100%;
+      box-sizing: border-box;
+    }
+    
+    .button-container {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+    }
+    
+    .copy-button {
+      background-color: #4D5277;
+    }
+    
+    .copy-button:hover {
+      background-color: #5A5F8D;
+    }
+    
+    .success-message {
+      color: #8AFF80;
+      margin-left: 10px;
+      opacity: 0;
+      transition: opacity 0.5s;
+    }
+    
+    .success-message.show {
+      opacity: 1;
+    }
+    
+    .return-button {
+      margin-top: 30px;
+      text-align: center;
+    }
+    
+    .return-button .button {
+      min-width: 200px;
+    }
+    
+    .completion-message {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+      padding: 15px;
+      border-radius: 8px;
+      background-color: rgba(123, 93, 245, 0.1);
+      border-left: 5px solid #7B5DF5;
+      display: none;
+    }
+    
+    .completion-message .checkmark {
+      font-size: 24px;
+      margin-right: 10px;
+      color: #8AFF80;
+    }
+
+    pre, code {
+      white-space: pre-wrap;
+      word-break: break-word;
+      overflow-wrap: break-word;
+      max-width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <div class="main-container">
+    <div class="header-text">
+      <h1>AIパイプライン処理</h1>
+      <p>処理内容を入力してください。AIが一連の処理を実行します。</p>
+    </div>
+
+    <!-- 入力フォーム -->
+    <div class="form-group">
+      <input type="text" id="user-input" placeholder="処理したい内容を入力してください">
+      <button id="submit-btn" class="button">実行</button>
+    </div>
+    
+    <!-- 進捗表示 -->
+    <div class="progress-container">
+      <div class="stage-indicators">
+        <div class="progress-bar">
+          <div class="progress-bar-fill" id="progress-fill"></div>
+        </div>
+        <div class="stage" id="stage-1">
+          <div class="stage-dot"></div>
+          <div class="stage-label">入力受付</div>
+        </div>
+        <div class="stage" id="stage-2">
+          <div class="stage-dot"></div>
+          <div class="stage-label">一次処理</div>
+        </div>
+        <div class="stage" id="stage-3">
+          <div class="stage-dot"></div>
+          <div class="stage-label">二次処理</div>
+        </div>
+        <div class="stage" id="stage-4">
+          <div class="stage-dot"></div>
+          <div class="stage-label">結果生成</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 処理状況を表示 -->
+    <div id="status-message">
+      <p id="status">AIの処理状況がここに表示されます</p>
+    </div>
+    
+    <!-- 完了メッセージ -->
+    <div class="completion-message" id="completion-message">
+      <span class="checkmark">✓</span>
+      <span>処理が完了しました！</span>
+    </div>
+    
+    <!-- 出力結果を表示するテキストエリア -->
+    <div id="result-container">
+      <h3>処理結果</h3>
+      <textarea id="output-area" readonly></textarea>
+      <div class="button-container">
+        <button id="copy-btn" class="button copy-button">クリップボードにコピー</button>
+        <span id="copy-success" class="success-message">コピーしました！</span>
+      </div>
+    </div>
+
+    <!-- ボタン群 -->
+    <div class="button-group">
+      <div class="return-button">
+        <a href="seminar-creator.html" class="button primary-button">ペルソナを呼ぶためのフロントセミナー作成へ</a>
+      </div>
+      <div class="return-button" style="margin-top: 15px;">
+        <a href="index.html" class="button">メインページへ戻る</a>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="pipeline.js"></script>
+</body>
+</html>

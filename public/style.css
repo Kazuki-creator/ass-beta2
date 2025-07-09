@@ -1,0 +1,578 @@
+/* =====================================================
+   Global Settings (全体設定)
+   ===================================================== */
+body { /* body要素の基本設定 */
+  font-family: Arial, sans-serif;  /* フォントファミリーをArial, sans-serifに設定 */
+  background-color: #1E1E2F;         /* 背景色をダークブルーに設定 */
+  color: #FFFFFF;                   /* 文字色を白に設定 */
+  margin: 0;                        /* 外側の余白をリセット */
+  padding: 0;                       /* 内側の余白をリセット */
+  display: flex;                    /* フレックスボックスレイアウトを使用 */
+  flex-direction: column;           /* 子要素を縦方向に配置 */
+}
+
+/* =====================================================
+   Header (ヘッダー設定)
+   ===================================================== */
+.header { /* ヘッダー全体のスタイル */
+  background-color: #252C48;        /* ヘッダー背景色を設定 */
+  position: fixed;                  /* 固定配置に設定 */
+  top: 0;                           /* 画面上端に配置 */
+  left: 0;                          /* 画面左端に配置 */
+  width: 100%;                      /* 横幅100%に設定 */
+  height: 80px;                     /* 高さ80pxに設定 */
+  display: flex;                    /* フレックスボックスレイアウトを使用 */
+  align-items: center;              /* 垂直方向に中央揃え */
+  padding: 0 20px;                  /* 左右に20pxの内側余白、上下は0 */
+  z-index: 1000;                    /* 重なり順を最前面に設定 */
+}
+.logo img { /* ロゴ画像のスタイル */
+  height: 80px;                     /* 画像の高さを80pxに設定 */
+}
+.header-text { /* ヘッダー内テキストのコンテナ */
+  display: flex;                    /* フレックスボックスレイアウトを使用 */
+  flex-direction: column;           /* 子要素を縦方向に配置 */
+  align-items: flex-start;          /* 子要素を左寄せに配置 */
+  text-align: left;                 /* テキストを左寄せに設定 */
+  margin-bottom: 30px;              /* 下に30pxの余白を設定 */
+}
+.header-text h1 { /* ヘッダー内のh1要素 */
+  font-size: 2rem;                  /* フォントサイズを2remに設定 */
+  margin: 0 15px 0 0;               /* 右に15pxの余白、他は0 */
+}
+.header-text p { /* ヘッダー内のp要素 */
+  margin: 0;                        /* マージンをリセット */
+  font-size: 1rem;                  /* フォントサイズを1remに設定 */
+  opacity: 0.8;                     /* 文字の透明度を0.8に設定 */
+}
+
+/* =====================================================
+   Layout (レイアウト全体)
+   ===================================================== */
+.container { /* ページ全体のレイアウトコンテナ */
+  display: flex;                    /* フレックスボックスレイアウトを使用 */
+  margin-top: 80px;                 /* ヘッダー分の余白（上80px）を確保 */
+}
+
+/* =====================================================
+   Sidebar Navigation (サイドバー / ナビゲーション)
+   ===================================================== */
+.sidebar { /* サイドバーのスタイル */
+  width: 240px;                     /* 幅を240pxに固定 */
+  background-color: #2A2A3A;         /* 背景色を設定 */
+  padding: 30px;                    /* 内側余白30px */
+  box-sizing: border-box;           /* パディングを含むボックスサイズ */
+  height: calc(100vh - 80px);        /* ビューポート高からヘッダー高さを差し引く */
+  position: fixed;                  /* 固定配置に設定 */
+  left: 0;                          /* 画面左端に配置 */
+  top: 80px;                        /* ヘッダー下から配置 */
+  overflow-y: auto;                 /* 縦スクロールを有効に */
+}
+.sidebar h2 { /* サイドバー内のh2要素 */
+  color: #FFFFFF;                   /* 文字色を白に設定 */
+  font-size: 20px;                  /* フォントサイズを20pxに設定 */
+  margin-bottom: 15px;              /* 下に15pxの余白を設定 */
+  padding-bottom: 5px;              /* 下に5pxの内側余白を設定 */
+  border-bottom: 1px solid #666666; /* 下線を追加 */
+}
+.sidebar ul { /* サイドバー内のリスト全体 */
+  list-style: none;                 /* リストマーカーを非表示に */
+  padding: 0;                       /* パディングをリセット */
+}
+.sidebar li { /* サイドバー内の各リストアイテム */
+  margin-bottom: 10px;              /* 下に10pxの余白を設定 */
+  padding: 5px 0;                   /* 上下に5px、左右は0の内側余白 */
+  font-size: 16px;                  /* フォントサイズを16pxに設定 */
+  color: #CCCCCC;                   /* 文字色を薄いグレーに設定 */
+  cursor: pointer;                  /* マウスオーバーでポインターに変更 */
+  transition: color 0.3s;           /* 文字色の変化に0.3秒のトランジション */
+}
+.sidebar li:hover { /* リストアイテムホバー時 */
+  color: #FFFFFF;                   /* ホバー時に文字色を白に変更 */
+}
+.sidebar-link { /* サイドバー内リンクのスタイル */
+  color: #CCCCCC !important;        /* リンク色を薄いグレーに強制設定 */
+  text-decoration: none !important; /* リンクの下線を削除（強制指定） */
+}
+.sidebar-link:visited { /* 訪問済みリンクのスタイル */
+  color: #CCCCCC !important;        /* 訪問済みでも薄いグレーを維持 */
+}
+.sidebar-link:hover { /* リンクホバー時 */
+  color: #FFFFFF !important;        /* ホバー時に文字色を白に変更 */
+}
+
+/* =====================================================
+   Main Content Area (メインコンテンツエリア)
+   ===================================================== */
+.content { /* メインコンテンツ領域のスタイル */
+  margin-left: 260px;               /* サイドバー分の余白（260px）を左に設定 */
+  padding: 20px;                    /* 内側余白20px */
+  flex: 1;                          /* 利用可能なスペースを拡張 */
+  box-sizing: border-box;           /* パディングを含むボックスサイズ */
+  text-align: left;                 /* テキストを左寄せに設定 */
+}
+
+/* =====================================================
+   Persona Selection Page (ペルソナ選定ページ固有)
+   ===================================================== */
+.main-container { /* ペルソナ選定ページのメインコンテナ */
+  max-width: 800px;                 /* 最大幅を800pxに制限 */
+  padding: 3px 30px;                /* 上下3px、左右30pxの内側余白 */
+  background-color: #252A41;        /* 背景色を暗めのブルーグレーに設定 */
+  border-radius: 12px;              /* 角を12px丸くする */
+  box-shadow: 0 8px 16px rgba(0,0,0,0.3); /* 影を追加（ぼかし8px、拡がり16px、透明度30%） */
+  position: relative;               /* 相対配置で位置調整可能に */
+  left: -20px;                      /* 全体を20px左に寄せる */
+}
+.form-group { /* フォームグループのスタイル */
+  margin-bottom: 30px;              /* 下に30pxの余白を設定 */
+  display: flex;                    /* フレックスボックスレイアウトを使用 */
+  gap: 10px;                       /* 子要素間に10pxのギャップを設定 */
+}
+#persona-input { /* ペルソナ入力フィールドのスタイル */
+  width: 600px;                     /* 固定幅600pxに設定 */
+  height: 40px;                     /* 高さ40pxに設定 */
+  padding: 10px;                    /* 内側余白10px */
+  font-size: 16px;                  /* フォントサイズ16pxに設定 */
+  border: 1px solid #cccccc;        /* 1pxの実線で枠線を設定 */
+  border-radius: 4px;               /* 角を4px丸くする */
+  box-sizing: border-box;           /* パディングを含むボックスサイズ */
+}
+
+/* =====================================================
+   Button Styles (ボタンスタイル)
+   共通ボタンと個別ボタンに分けて定義
+   ===================================================== */
+
+/* --- Main Return Button (メインページに戻るボタン) --- */
+.main-return-button { /* メインページに戻るためのボタン */
+  min-width: 200px;                 /* 最小幅を200pxに設定 */
+  color: #FFFFFF;                   /* 文字色を白に設定 */
+  text-decoration: none;            /* 下線を削除 */
+  display: inline-block;            /* インラインブロック表示に設定 */
+  padding: 12px 25px;               /* 内側余白：上下12px、左右25px */
+  background-color: #6E44FF;        /* 背景色を紫に設定 */
+  border-radius: 6px;               /* 角を6px丸くする */
+  transition: background-color 0.3s ease, transform 0.3s ease; /* ホバー時のトランジション効果 */
+}
+.main-return-button:hover { /* ホバー時のスタイル */
+  background-color: #5A3BD8;        /* ホバー時の背景色を変更 */
+  transform: translateY(-2px);      /* ホバー時に上へ2px移動 */
+}
+
+/* --- Copy Button (クリップボードコピー専用ボタン) --- */
+.copy-button { /* クリップボードコピー用ボタンのスタイル */
+  display: inline-block;            /* インラインブロック表示 */
+  padding: 12px 25px;               /* 内側余白：上下12px、左右25px */
+  background-color: #6E44FF;        /* 背景色：紫 */
+  color: #FFFFFF;                   /* 文字色：白 */
+  border: none;                     /* 枠線なし */
+  border-radius: 6px;               /* 角を6px丸くする */
+  text-decoration: none;            /* 下線なし */
+  cursor: pointer;                  /* カーソルポインター */
+  transition: background-color 0.3s ease, transform 0.3s ease; /* ホバー時の変化 */
+}
+.copy-button:hover { /* ホバー時のスタイル */
+  background-color: #5A3BD8;        /* ホバー時の背景色変更 */
+  transform: translateY(-2px);      /* 少し上に移動 */
+}
+
+/* --- Creation Button (作成ボタン) --- */
+.create-button { /* セミナー作成用ボタンのスタイル */
+  background-color: #FF9800;        /* 背景色をオレンジに設定 */
+  padding: 10px 30px;               /* 内側余白：上下20px、左右25px */
+  color: #FFFFFF;                   /* 文字色を白に設定 */
+  border: none;                     /* 枠線なし */
+  border-radius: 6px;               /* 角丸6px */
+  cursor: pointer;                  /* クリック時のカーソルをポインターに設定 */
+  transition: background-color 0.3s ease, transform 0.3s ease; /* 背景色と位置変化にトランジションを設定 */
+  font-weight: bold;                /* 文字を太字に設定 */
+  text-decoration: none;            /* 下線を削除 */
+  display: inline-flex;             /* インラインフレックスで配置 */
+  align-items: center;              /* 垂直方向に中央揃え */
+  justify-content: center;          /* 水平方向に中央揃え */
+  text-align: center;               /* テキストを中央寄せに設定 */
+  white-space: nowrap;              /* テキストの折り返しを防止 */
+  font-size: 16px;                  /* フォントサイズを16pxに設定 */
+}
+.create-button:hover { /* セミナー作成ボタンのホバー時 */
+  background-color: #F57C00;        /* ホバー時の背景色を変更 */
+  transform: translateY(-2px);      /* ホバー時に上へ2px移動 */
+}
+
+/* --- Analyze Button (分析ボタン) --- */
+.analyze-button { /* アンケート分析用ボタンのスタイル */
+  background-color: #FF8c00;        /* 背景色をオレンジに設定 */
+  color: #FFFFFF;                   /* 文字色を白に設定 */
+  font-size: 18px;                  /* フォントサイズを18pxに設定 */
+  font-weight: bold;                /* 文字を太字に設定 */
+  padding: 15px 30px;               /* 内側余白：上下15px、左右30px */
+  border: none;                     /* 枠線なし */
+  border-radius: 8px;               /* 角丸8pxに設定 */
+  cursor: pointer;                  /* クリック時のカーソルをポインターに設定 */
+  display: block;                   /* ブロック表示に設定 */
+  width: fit-content;               /* コンテンツに合わせた幅に設定 */
+  margin: 0 auto;                   /* 自動マージンで中央寄せ */
+  transition: background-color 0.3s ease, transform 0.2s ease; /* 背景色と変形にトランジションを設定 */
+  margin-bottom: 40px;              /* 下に40pxの余白を設定 */
+}
+.analyze-button:hover { /* アンケート分析ボタンのホバー時 */
+  background-color: #F57C00;        /* ホバー時の背景色を変更 */
+  transform: scale(1.05);           /* ホバー時に1.05倍に拡大 */
+}
+
+/* --- Button Container (ボタンコンテナ) --- */
+.button-container { /* ボタン群を横並びに配置するコンテナ */
+  display: flex;                    /* フレックスボックスレイアウトを使用 */
+  justify-content: space-between;   /* 子要素を両端に配置 */
+  margin-top: 20px;                 /* 上に20pxの余白を設定 */
+}
+
+/* --- Seminar Creation Button Area (セミナー作成ボタンエリア) --- */
+.seminar-creation-button-area { /* セミナー作成ボタン専用エリア */
+  margin-top: 30px;                 /* 上に30pxの余白を設定 */
+  text-align: center;               /* テキストを中央寄せに設定 */
+}
+
+/* --- Main Return Button Area (メインページに戻るボタンエリア) --- */
+.main-return-button-area { /* メインページに戻るボタン専用エリア */
+  margin-top: 30px;                 /* 上に30pxの余白を設定 */
+  text-align: center;               /* テキストを中央寄せに設定 */
+  margin-bottom: 60px;              /* 下に60pxの余白を設定 */
+}
+
+/* --- Clipboard Copy Container (クリップボードコピーコンテナ) --- */
+.clipboard-container { /* クリップボードコピー用コンテナ */
+  display: none;                    /* 初期状態は非表示 */
+  flex-direction: column;           /* 子要素を縦方向に配置 */
+  align-items: flex-start;          /* 左寄せに配置 */
+  width: fit-content;               /* コンテンツに合わせた幅に設定 */
+  margin-top: 30px;                 /* 上に30pxの余白を設定 */
+}
+
+/* --- Copy Success Message (コピー成功メッセージ) --- */
+.copy-success { /* 「コピーしました！」メッセージのスタイル */
+  opacity: 0;                       /* 初期状態は非表示（透明度0） */
+  transition: opacity 0.5s ease, transform 0.3s ease; /* 透明度と変形にトランジションを設定 */
+  margin-top: 5px;                  /* 上に5pxの余白を設定 */
+  color: #8AFF80;                   /* 文字色を緑に設定 */
+  font-weight: bold;                /* 文字を太字に設定 */
+  margin-left: 30px;                /* 左に30pxの余白を設定 */
+}
+.copy-success.show { /* .copy-successに.showクラスが付与された場合 */
+  opacity: 1;                       /* 透明度を1にして表示 */
+  display: inline !important;
+  color: #8bc34a;
+  font-weight: bold;
+}
+
+/* =====================================================
+   Items / Cards (小項目・カード)
+   ===================================================== */
+.items-container { /* 複数カードを配置するコンテナ */
+  display: grid;                    /* グリッドレイアウトを使用 */
+  grid-template-columns: repeat(auto-fill, 250px);  /* 250px幅のカラムを自動フィル */
+  grid-auto-rows: 80px;             /* 各行の高さを80pxに設定 */
+  gap: 50px;                        /* カード間に50pxのギャップを設定 */
+  margin-bottom: 30px;              /* 下に30pxの余白を設定 */
+  justify-content: start;           /* 左寄せに配置 */
+}
+.item { /* 各カードのスタイル */
+  width: 250px;                     /* 幅を250pxに固定 */
+  height: 80px;                     /* 高さを80pxに固定 */
+  padding: 15px;                    /* 内側余白15px */
+  border-radius: 8px;               /* 角を8px丸くする */
+  display: flex;                    /* フレックスボックスレイアウトを使用 */
+  flex-direction: column;           /* 子要素を縦方向に配置 */
+  align-items: center;              /* 水平方向に中央揃え */
+  justify-content: center;          /* 垂直方向に中央揃え */
+  text-align: center;               /* テキストを中央寄せに設定 */
+  cursor: pointer;                  /* マウスオーバー時にポインターに変更 */
+  transition: transform 0.3s, background-color 0.3s;  /* 変形と背景色にトランジションを設定 */
+  text-decoration: none !important; /* 下線を削除（強制指定） */
+  color: inherit !important;        /* 親要素の文字色を継承（強制指定） */
+}
+.item:hover { /* カードホバー時 */
+  transform: translateY(-5px);      /* ホバー時に上へ5px移動 */
+}
+.item h3 { /* カード内のタイトル（h3要素） */
+  margin: 0;                        /* マージンをリセット */
+  font-size: 18px;                  /* フォントサイズを18pxに設定 */
+  color: #FFFFFF;                   /* 文字色を白に設定 */
+}
+.item p { /* カード内のテキスト（p要素） */
+  margin-top: 10px;                 /* 上に10pxの余白を設定 */
+  font-size: 14px;                  /* フォントサイズを14pxに設定 */
+  color: #DADADA;                   /* 文字色を薄いグレーに設定 */
+}
+
+
+/* =====================================================
+   Disabled（Basic版でPro専用機能）グレーグラデーション
+   ===================================================== */
+.item.disabled {
+  filter: none;    /* グレースケールは無効化 */
+  opacity: 1;      /* 透過は背景レイヤーで制御 */
+  position: relative;
+  overflow: hidden;
+}
+
+/* 半透明の黒オーバーレイを擬似要素で追加 */
+.item.disabled::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.5);  /* 50%黒 */
+  pointer-events: none;
+}
+
+/* カテゴリ別グラデーション（元のまま） */
+/* Coaching (コーチング支援 – 紫系) */
+.item.disabled[data-category="coaching"] {
+  background: linear-gradient(to bottom, #5E33EE, #7D54D9);
+}
+
+/* Marketing (マーケティング支援 – ブルー系) */
+.item.disabled[data-category="marketing"] {
+  background: linear-gradient(135deg, #10227F, #3358C4);
+}
+
+/* Seminar (セミナー支援 – 水色系) */
+.item.disabled[data-category="seminar"] {
+  background: linear-gradient(135deg, #0D47A1, #1998F4);
+}
+
+/* SNS (SNS支援 – ティール～ライトシーグリーン系) */
+.item.disabled[data-category="sns"] {
+  background: linear-gradient(135deg, #004D40, #26A69A);
+}
+
+
+/* --- Card Background Gradients by Category (カード背景グラデーション) --- */
+/* Coaching (コーチング支援 – 紫系) */
+.item[data-category="coaching"] { /* コーチング支援カードの背景 */
+  background: linear-gradient(to bottom, #5E33EE, #7D54D9); /* 上から下への紫グラデーション */
+}
+.item[data-category="coaching"]:hover { /* コーチング支援カードホバー時 */
+  background: linear-gradient(to bottom, #4B28C8, #6A3AC2); /* ホバー時のグラデーション変更 */
+}
+/* Marketing (マーケティング支援 – ブルー系) */
+.item[data-category="marketing"] { /* マーケティング支援カードの背景 */
+  background: linear-gradient(135deg, #10227F, #3358C4); /* 斜めのブルーグラデーション */
+}
+.item[data-category="marketing"]:hover { /* マーケティング支援カードホバー時 */
+  background: linear-gradient(to bottom, #1A3370, #2A4B9E); /* ホバー時のグラデーション変更 */
+}
+/* Seminar (セミナー支援 – 水色系) */
+.item[data-category="seminar"] { /* セミナー支援カードの背景 */
+  background: linear-gradient(135deg, #0D47A1, #1998F4); /* 斜めの水色グラデーション */
+}
+.item[data-category="seminar"]:hover { /* セミナー支援カードホバー時 */
+  background: linear-gradient(135deg, #0A3790, #1578D0); /* ホバー時のグラデーション変更 */
+}
+/* SNS (SNS支援 – ティール～ライトシーグリーン系) */
+.item[data-category="sns"] { /* SNS支援カードの背景 */
+  background: linear-gradient(135deg, #004D40, #26A69A); /* 斜めのティール～ライトシーグリーングラデーション */
+}
+.item[data-category="sns"]:hover { /* SNS支援カードホバー時 */
+  background: linear-gradient(135deg, #00372E, #1E8C72); /* ホバー時のグラデーション変更 */
+}
+
+/* =====================================================
+   Progress Bar (進捗バー)
+   ===================================================== */
+.progress-container { /* 進捗バー全体のコンテナ */
+  background-color: #1F2236;        /* 背景色を設定 */
+  border-radius: 8px;               /* 角丸8pxに設定 */
+  padding: 20px;                    /* 内側余白20px */
+  box-sizing: border-box;           /* パディングを含むボックスサイズ */
+  text-align: left;                 /* テキストを左寄せに設定 */
+}
+.progress-steps { /* 進捗ステップのコンテナ */
+  display: flex;                    /* フレックスボックスレイアウトを使用 */
+  position: relative;               /* 相対配置に設定 */
+  justify-content: space-between;   /* 子要素を均等に配置 */
+}
+.progress-bar { /* 進捗バーの背景 */
+  position: absolute;               /* 絶対配置に設定 */
+  height: 4px;                      /* 高さ4pxに設定 */
+  background-color: #3D4267;        /* 背景色を設定 */
+  top: 23px;                       /* 上から23pxに配置 */
+  left: 0;                         /* 左端に配置 */
+  right: 0;                        /* 右端に配置 */
+  z-index: 1;                      /* レイヤー順1に設定 */
+  margin-bottom: 20px;             /* 下に20pxの余白を設定 */
+}
+.progress-bar-fill { /* 進捗バーの塗りつぶし部分 */
+  position: absolute;               /* 絶対配置に設定 */
+  height: 4px;                      /* 高さ4pxに設定 */
+  background-color: #7B5DF5;        /* 塗りつぶし色を設定 */
+  top: 0;                          /* 上端に配置 */
+  left: 0;                         /* 左端に配置 */
+  width: 0%;                       /* 初期幅0%に設定 */
+  transition: width 0.5s ease;      /* 幅の変化に0.5秒のトランジションを設定 */
+  z-index: 2;                      /* レイヤー順2に設定 */
+}
+.progress-step { /* 個々の進捗ステップ */
+  display: flex;                    /* フレックスボックスレイアウトを使用 */
+  flex-direction: column;           /* 子要素を縦方向に配置 */
+  align-items: center;              /* 水平方向に中央揃え */
+  position: relative;               /* 相対配置に設定 */
+  z-index: 3;                      /* レイヤー順3に設定 */
+  width: 20%;                      /* 横幅を20%に設定 */
+}
+.step-dot { /* 進捗ステップの丸いドット */
+  width: 20px;                     /* 幅20pxに設定 */
+  height: 20px;                    /* 高さ20pxに設定 */
+  border-radius: 50%;              /* 円形に設定 */
+  background-color: #3D4267;        /* 初期背景色を設定 */
+  margin-bottom: 10px;             /* 下に10pxの余白を設定 */
+  transition: background-color 0.3s; /* 背景色変化に0.3秒のトランジション */
+  border: 3px solid #1F2236;        /* 3pxの実線で境界線を設定 */
+}
+.step-label { /* 進捗ステップのラベル */
+  font-size: 0.9rem;               /* フォントサイズを0.9remに設定 */
+  text-align: center;              /* テキストを中央寄せに設定 */
+  color: #8A8DB0;                  /* 文字色を設定 */
+  transition: color 0.3s;          /* 色変化に0.3秒のトランジションを設定 */
+  max-width: 100%;                 /* 最大幅を100%に設定 */
+  overflow: hidden;                /* はみ出した部分を隠す */
+  text-overflow: ellipsis;         /* テキスト溢れ時に省略記号を表示 */
+}
+.progress-step.active .step-dot { /* アクティブな進捗ステップのドット */
+  background-color: #7B5DF5;        /* 背景色を変更 */
+  box-shadow: 0 0 10px rgba(123,93,245,0.5); /* 10pxの影を追加 */
+}
+.progress-step.active .step-label { /* アクティブな進捗ステップのラベル */
+  color: #FFFFFF;                  /* 文字色を白に設定 */
+  font-weight: bold;               /* 太字に設定 */
+}
+.progress-step.completed .step-dot { /* 完了した進捗ステップのドット */
+  background-color: #7B5DF5;        /* 背景色を設定 */
+}
+.progress-step.completed .step-label { /* 完了した進捗ステップのラベル */
+  color: #FFFFFF;                  /* 文字色を白に設定 */
+}
+
+/* =====================================================
+   Message Box (メッセージボックス)
+   ===================================================== */
+#message-box { /* メッセージ表示用ボックス */
+  margin-top: 20px;                /* 上に20pxの余白を設定 */
+  border-radius: 8px;              /* 角丸8pxに設定 */
+  background-color: #1F2236;        /* 背景色を設定 */
+  padding: 20px;                   /* 内側余白20px */
+  min-height: 100px;               /* 最小高さを100pxに設定 */
+}
+
+/* =====================================================
+   Output Area (出力結果エリア)
+   ===================================================== */
+#output-container { /* 出力結果表示コンテナ */
+  margin-top: 30px;                /* 上に30pxの余白を設定 */
+  display: none;                   /* 初期状態は非表示 */
+}
+#persona-output { /* ペルソナ出力エリアのスタイル */
+  width: 100%;                    /* 横幅を100%に設定 */
+  min-height: 300px;               /* 最小高さを300pxに設定 */
+  background-color: #1a1b2e;        /* 背景色を設定 */
+  border: 1px solid #373A59;       /* 枠線を1px実線で設定 */
+  color: white;                   /* 文字色を白に設定 */
+  padding: 20px;                  /* 内側余白20px */
+  border-radius: 8px;             /* 角丸8pxに設定 */
+  font-family: monospace;         /* 等幅フォントに設定 */
+  margin-bottom: 15px;            /* 下に15pxの余白を設定 */
+  white-space: pre-wrap;          /* 改行と空白をそのまま表示 */
+  resize: vertical;               /* 垂直方向にリサイズ可能 */
+  overflow-x: hidden;             /* 横方向のオーバーフローを隠す */
+  overflow-y: auto;               /* 縦方向のオーバーフローを自動表示 */
+  max-width: 100%;                /* 最大幅を100%に設定 */
+  box-sizing: border-box;         /* パディングを含むボックスサイズに設定 */
+}
+
+#output-container.active { display: block; }
+#output-container.active .clipboard-container { display: flex; }
+
+/* =====================================================
+   Link Reset (リンクスタイルのリセット)
+   ===================================================== */
+.item a { /* カード内リンクのリセット */
+  text-decoration: none !important; /* リンクの下線を削除（強制指定） */
+  color: inherit !important;        /* リンクの色を親要素に合わせる（強制指定） */
+  display: block;                   /* ブロック表示に設定 */
+  width: 100%;                      /* 横幅100%に設定 */
+  height: 100%;                     /* 高さ100%に設定 */
+}
+
+/* =====================================================
+   Others (その他)
+   ===================================================== */
+#message { /* ユーザーからのメッセージ表示 */
+  white-space: pre-wrap;          /* 改行と空白をそのまま表示 */
+}
+
+/* =====================================================
+   Textarea Styles (テキスト入力エリア)
+   ===================================================== */
+/* 共通のtextarea設定 */
+textarea { /* 全textareaの基本スタイル */
+  width: 80%;                     /* 横幅を80%に設定 */
+  max-width: 800px;               /* 最大幅を800pxに制限 */
+  padding: 15px;                  /* 内側余白15px */
+  border: none;                   /* 枠線をなしに設定 */
+  border-radius: 6px;             /* 角丸6pxに設定 */
+  background-color: #1a1b2e;        /* 背景色を設定 */
+  color: #FFFFFF;                 /* 文字色を白に設定 */
+  font-size: 16px;                /* フォントサイズを16pxに設定 */
+  min-height: 100px;              /* 最小高さを100pxに設定 */
+  margin-top: 15px;               /* 上に15pxの余白を設定 */
+  margin-bottom: 15px;            /* 下に15pxの余白を設定 */
+  resize: vertical;              /* 垂直方向にリサイズ可能 */
+}
+/* .main-container内のtextareaは横幅を100%に上書き */
+.main-container textarea { /* ペルソナ選定ページ内textareaの上書き設定 */
+  width: 100%;                    /* 横幅を100%に設定 */
+  box-sizing: border-box;         /* パディングを含むボックスサイズに設定 */
+}
+
+/* 出力結果エリアの行間を1.5に設定 */
+#output-container p,
+#output-container div {
+  line-height: 1.5;
+}
+
+/* Proユーザーにのみ表示 */
+.plan-Pro   .basic-only { display: none; }
+
+/* Basicユーザーにのみ表示 */
+.plan-Basic .pro-only   { display: none; }
+
+
+/* --- Markdown/AI応答出力エリア用デフォルト装飾 --- */
+#output h1 { font-size: 2em; margin: 1.2em 0 0.6em 0; font-weight: bold; }
+#output h2 { font-size: 1.7em; margin: 1.1em 0 0.5em 0; font-weight: bold; }
+#output h3 { font-size: 1.3em; margin: 1em 0 0.4em 0; font-weight: bold; }
+#output h4 { font-size: 1.1em; margin: 0.9em 0 0.3em 0; font-weight: bold; }
+#output h5 { font-size: 1em; margin: 0.8em 0 0.2em 0; font-weight: bold; }
+#output h6 { font-size: 0.95em; margin: 0.7em 0 0.2em 0; font-weight: bold; }
+#output p { margin: 0.5em 0; }
+#output ul, #output ol   { margin: 0.0em 0 0.0em 1.0em; padding-left: 1.0em; }
+#output li               { margin: 0.0em 0; }
+#output strong           { font-weight: bold; }
+#output em               { font-style: italic; }
+#output blockquote       { border-left: 3px solid #4f72a1; margin: 0.8em 0; padding: 0.5em 1em; background: #232b3b; color: #bbccdd; }
+#output pre, #output code { background: #232b3b; color: #e1e8ef; border-radius: 4px; padding: 0.2em 0.5em; font-size: 0.95em; }
+#output pre { padding: 0.7em 1em; overflow-x: auto; }
+#output table { border-collapse: collapse; margin: 1em 0; }
+#output th, #output td { border: 1px solid #666666; padding: 0.3em 0.7em; }
+#output hr { border: none; border-top: 1px solid #333333; margin: 1em 0; }
+#output a { color: #66ccff; text-decoration: underline; }
+#output img { max-width: 100%; margin: 0.5em 0; }
+.large-text {
+  margin: 1.0em 0;
+  font-size: 1.3em;
+}
+
+
+
+

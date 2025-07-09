@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>事前アンケートの見立て</title>
+  <link rel="prefetch" href="/sidebar.html">
+  <script type="module" src="./pre-survey.js"></script>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <!-- ヘッダー -->
+  <header class="header">
+    <div class="logo">
+      <img src="https://cdn.glitch.global/d6b52f0f-967d-4d53-8d7f-3cfb840bae62/AI%20Supprot%20System%20(1000%20x%20200%20px).png?v=1740035748637" alt="AI Support System Logo">
+    </div>
+  </header>
+
+  <div class="container">
+    <!-- サイドバー -->
+    <div id="sidebar-container"></div>
+    <script defer src="/sidebar-loader.js"></script>
+
+    <main class="content">
+      <div class="main-container">
+        <h1>【事前アンケートの見立て】</h1>
+        <p>アンケート回答を入力して、心理的分析と質問リストを生成します。</p>
+        <!-- 入力フォーム -->
+        <form id="pre-survey-form">
+          <label for="purpose">① 今回体験セッションを受ける目的はなんですか？</label>
+          <textarea id="purpose" placeholder="例：仕事のパフォーマンスを上げたい、キャリアの方向性を見つけたい、など"></textarea>
+
+          <label for="goal">② 3ヶ月から1年以内に欲しい結果・目標はなんですか？</label>
+          <textarea id="goal" placeholder="例：月収を30%アップさせたい、新しい部署に異動したい、など"></textarea>
+
+          <label for="motivation">③ なぜその結果が欲しいのですか？</label>
+          <textarea id="motivation" placeholder="例：家族との時間を増やしたい、自分の可能性を広げたい、など"></textarea>
+
+          <label for="obstacle">④ 目標達成を妨げる障害があるとしたら何ですか？</label>
+          <textarea id="obstacle" placeholder="例：時間管理ができない、自信がない、周囲のサポートがない、など"></textarea>
+
+          <label for="background">⑤その他、あなたのことを教えてください。<br>（今までの経験、考え方、現在の状況、お仕事、年齢（任意）、趣味、ご家族など）</label>
+          <textarea id="background" placeholder="今までの経験、考え方、現在の状況、お仕事、年齢（任意）、趣味、ご家族など"></textarea>
+
+          <div class="button-container">
+            <button type="submit" id="analyze-btn" class="button analyze-button">アンケートを分析する</button>
+          </div>
+        </form>
+
+        <!-- 進捗バー -->
+        <div class="progress-container">
+          <div class="progress-steps">
+            <div class="progress-bar">
+              <div class="progress-bar-fill" id="progress-fill"></div>
+            </div>
+            <div class="progress-step" id="step-1">
+              <div class="step-dot"></div>
+              <div class="step-label">データ解析</div>
+            </div>
+            <div class="progress-step" id="step-2">
+              <div class="step-dot"></div>
+              <div class="step-label">心理分析</div>
+            </div>
+            <div class="progress-step" id="step-3">
+              <div class="step-dot"></div>
+              <div class="step-label">質問生成</div>
+            </div>
+            <div class="progress-step" id="step-4">
+              <div class="step-dot"></div>
+              <div class="step-label">解析完了</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 出力結果 -->
+        <div id="output-container" style="display: none;">
+          <h3>アンケート分析結果</h3>
+          <div id="output"></div>
+          <!-- クリップボードにコピー機能 -->
+          <div class="clipboard-container" style="margin-top:1em;">
+            <button class="copy-button" id="copy-btn">クリップボードにコピーする</button>
+            <span class="copy-success" id="copy-success" style="display:none; margin-left: 1em; color:#8bc34a;">コピーしました！</span>
+          </div>
+        </div>
+
+        <!-- メインページに戻るボタン -->
+        <div class="main-return-button-area">
+          <a href="#" id="return-home" class="main-return-button">メインページへ戻る</a>
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

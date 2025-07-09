@@ -1,0 +1,27 @@
+[API受信] 2025-06-03T05:21:23.115Z body={"email":"kazuki.nakamura.5119@gmail.com","name":"中村香月","plan":"monthly"}
+[Notion更新完了] 2025-06-03T05:21:27.299Z
+[メール送信直前] 2025-06-03T05:21:27.299Z
+[API受信] 2025-06-03T05:34:17.206Z body={"email":"kazuki.nakamura.5119@gmail.com","name":"中村香月","plan":"yearly"}
+[Notion更新完了] 2025-06-03T05:34:22.496Z
+[メール送信直前] 2025-06-03T05:34:22.496Z
+[API受信] 2025-06-03T05:38:04.095Z body={"email":"kazuki.nakamura.5119@gmail.com","name":"中村香月","plan":"monthly"}
+[Notion更新完了] 2025-06-03T05:38:05.210Z
+[メール送信直前] 2025-06-03T05:38:05.210Z
+[API受信] 2025-06-03T05:40:34.529Z body={"email":"kazuki.nakamura.5119@gmail.com","name":"中村香月","plan":"monthly"}
+[Notion更新完了] 2025-06-03T05:40:37.699Z
+[メール送信直前] 2025-06-03T05:40:37.699Z
+[API受信] 2025-06-03T05:57:22.605Z body={"email":"kazuki.nakamura.5119@gmail.com","name":"中村香月","plan":"yearly"}
+[Notion更新完了] 2025-06-03T05:57:25.661Z
+[メール送信直前] 2025-06-03T05:57:25.661Z
+[API受信] 2025-06-04T07:48:20.628Z body={"email":"kazuki.nakamura.5119@gmail.com","name":"中村香月","plan":"yearly"}
+[Notion更新完了] 2025-06-04T07:48:21.823Z
+[メール送信直前] 2025-06-04T07:48:21.823Z
+[API受信] 2025-07-01T01:10:55.544Z body={"email":"gaganeko331@gmail.com","name":"山賀幸子","plan":"yearly"}
+[Notion更新完了] 2025-07-01T01:10:56.513Z
+[メール送信直前] 2025-07-01T01:10:56.513Z
+[API受信] 2025-07-08T10:17:54.108Z body={"email":"sayuri.ukai@outlook.jp","name":"鵜飼","plan":"monthly"}
+[Notion更新完了] 2025-07-08T10:17:59.172Z
+[メール送信直前] 2025-07-08T10:17:59.172Z
+[API受信] 2025-07-08T13:09:11.943Z body={"email":"mmng.xy2.sia@icloud.com","name":"井野満理奈","plan":"monthly"}
+[Notion更新完了] 2025-07-08T13:09:14.646Z
+[メール送信直前] 2025-07-08T13:09:14.646Z

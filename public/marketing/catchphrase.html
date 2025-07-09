@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>キャッチコピー作成</title>
+  <link rel="prefetch" href="../sidebar.html">
+  <link rel="stylesheet" href="../style.css">
+  <script defer src="/sidebar-loader.js"></script>
+  <script type="module" src="./catchphrase.js"></script>
+</head>
+<body>
+  <!-- ヘッダー -->
+  <header class="header">
+    <div class="logo">
+      <img src="https://cdn.glitch.global/d6b52f0f-967d-4d53-8d7f-3cfb840bae62/AI%20Supprot%20System%20(1000%20x%20200%20px).png?v=1740035748637" alt="AI Support System Logo">
+    </div>
+  </header>
+
+  <div class="container">
+    <!-- サイドバー -->
+    <div id="sidebar-container"></div>
+
+    <main class="content">
+      <div class="main-container">
+        <h1>【キャッチコピー作成】</h1>
+        <p>ターゲット顧客に響く、魅力的なキャッチコピーを作成しましょう。</p>
+        
+        <!-- 入力フォーム -->
+        <form id="catchphrase-form">
+          <label for="target">① ターゲット</label>
+          <textarea id="target" rows="2" placeholder="例: 20代前半の若手ビジネスマン"></textarea>
+          
+          <label for="problem">② ターゲットの悩み</label>
+          <textarea id="problem" rows="2" placeholder="例: キャリアアップに不安がある"></textarea>
+          
+          <label for="productName">③ 商品やサービスの名称</label>
+          <textarea id="productName" rows="2" placeholder="例: キャリアブーストプログラム"></textarea>
+          
+          <label for="feature">④ 商品やサービスの特徴（他社との違い、独自性、強みなど）</label>
+          <textarea id="feature" rows="2" placeholder="例: 独自の自己分析ツールと個別指導"></textarea>
+          
+          <label for="benefit">⑤ ターゲットが商品やサービスを利用することで得られる具体的なメリット</label>
+          <textarea id="benefit" rows="2" placeholder="例: 即戦力のスキルアップと自己成長が期待できる"></textarea>
+          
+          <label for="futureBenefit">⑥ 商品やサービスを利用したターゲットの理想の未来（ベネフィット）</label>
+          <textarea id="futureBenefit" rows="2" placeholder="例: 自信にあふれたキャリアを実現できる"></textarea>
+          
+          <label for="image">⑦ 商品やサービスのイメージ（親しみやすさ、高級感、安心感など）</label>
+          <textarea id="image" rows="2" placeholder="例: モダンで洗練されたデザイン"></textarea>
+          
+          <label for="extra">⑧ 補足情報（AIに伝えておきたい前提知識や情報など）</label>
+          <textarea id="extra" rows="2" placeholder="例: 市場シェア拡大を狙った新サービス"></textarea>
+          
+          <div class="button-container">
+            <button id="catchphrase-submit-btn" class="button analyze-button">キャッチコピーを作る！</button>
+          </div>
+        </form>
+
+        <!-- 進捗バー -->
+        <div class="progress-container">
+          <div class="progress-steps">
+            <div class="progress-bar">
+              <div class="progress-bar-fill" id="progress-fill"></div>
+            </div>
+            <div class="progress-step" id="step-1">
+              <div class="step-dot"></div>
+              <div class="step-label">データ解析</div>
+            </div>
+            <div class="progress-step" id="step-2">
+              <div class="step-dot"></div>
+              <div class="step-label">コピー案作成</div>
+            </div>
+            <div class="progress-step" id="step-3">
+              <div class="step-dot"></div>
+              <div class="step-label">最適化</div>
+            </div>
+            <div class="progress-step" id="step-4">
+              <div class="step-dot"></div>
+              <div class="step-label">完了</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 出力結果 -->
+        <div id="output-container" style="display: none;">
+          <h3>生成されたキャッチコピー</h3>
+          <div id="output"></div>
+          <!-- クリップボードにコピー機能 -->
+          <div class="clipboard-container" style="margin-top:1em;">
+            <button class="copy-button" id="copy-btn">クリップボードにコピーする</button>
+            <span class="copy-success" id="copy-success" style="display:none; margin-left: 1em; color:#8bc34a;">コピーしました！</span>
+          </div>
+        </div>
+
+        <!-- メインページに戻るボタン -->
+        <div class="main-return-button-area">
+          <a href="#" id="return-home" class="main-return-button">メインページへ戻る</a>
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

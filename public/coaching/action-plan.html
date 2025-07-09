@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>行動計画</title>
+  <script type="module" src="./action-plan.js"></script>
+  <link rel="stylesheet" href="../style.css">
+</head>
+  
+<body>
+  <!-- ヘッダー -->
+  <header class="header">
+    <div class="logo">
+      <img src="https://cdn.glitch.global/d6b52f0f-967d-4d53-8d7f-3cfb840bae62/AI%20Supprot%20System%20(1000%20x%20200%20px).png?v=1740035748637" alt="AI Support System Logo">
+    </div>
+  </header>
+
+  <div class="container">
+    <!-- サイドバー -->
+    <div id="sidebar-container"></div>
+    <!-- ↓ここだけを入れ替え（インライン fetch を消して loader を読む） -->
+    <script defer src="/sidebar-loader.js"></script>
+    
+    <main class="content">
+      <div class="main-container">
+        <h1>【行動計画】</h1>
+        <p>目標を達成するための具体的なアクションプランを作成しましょう。</p>
+        
+        <form id="action-plan-form">
+          <label for="goal">①あなたの目標を教えてください（期日は必ず入れてください：～以内に,～までに）</label>
+          <textarea id="goal" placeholder="例: 1年以内に講座型ビジネスで1000万円稼ぐこと"></textarea>
+          
+          <label for="skills">②目標達成に使えそうなあなたが持っているスキルやこれまでの実績を教えてください</label>
+          <textarea id="skills" placeholder="例: グラフィックデザイナーとして3年務めていました、TOEIC:750点、管理職経験8年など"></textarea>
+          
+          <label for="background">③行動計画を作るにあたって考慮してほしい背景などがあればお書きください。<br/>（※ない場合は「とくになし」とお書きください）</label>
+          <textarea id="background" placeholder="例: 小学生の子どもが二人いるため、朝と夕方の時間は作業が難しい"></textarea>
+        <div class="button-container">          
+          <button id="action-plan-submit-btn" class="button analyze-button">行動計画を作る！</button>
+        </div>
+        </form>
+        
+       <!-- 進捗バー -->
+        <div class="progress-container">
+          <div class="progress-steps">
+            <div class="progress-bar">
+              <div class="progress-bar-fill" id="progress-fill"></div>
+            </div>
+            <div class="progress-step" id="step-1"><div class="step-dot"></div><div class="step-label">データ解析</div></div>
+            <div class="progress-step" id="step-2"><div class="step-dot"></div><div class="step-label">計画作成</div></div>
+            <div class="progress-step" id="step-3"><div class="step-dot"></div><div class="step-label">最適化</div></div>
+            <div class="progress-step" id="step-4"><div class="step-dot"></div><div class="step-label">完了</div></div>
+          </div>
+        </div>
+
+        <!-- 出力結果 -->
+        <div id="output-container" style="display: none;">
+          <h3>生成された行動計画</h3>
+          <div id="output"></div>
+          <div class="clipboard-container" style="margin-top:1em;">
+            <button class="copy-button" id="copy-btn">クリップボードにコピーする</button>
+            <span class="copy-success" id="copy-success" style="display:none; margin-left: 1em; color:#8bc34a;">コピーしました！</span>
+          </div>
+        </div>
+
+
+        <!-- メインページに戻るボタン -->
+        <div class="main-return-button-area">
+          <a href="#" id="return-home" class="main-return-button">メインページへ戻る</a>
+        </div>
+        
+      </div>
+    </main>
+  </div>
+</body>
+</html>

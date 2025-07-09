@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Basic版 - AI支援システム</title>
+  <link rel="stylesheet" href="./style.css">
+  <script defer src="./script.js"></script>
+</head>
+<body>
+  <header class="header">
+    <div class="logo">
+      <!-- ロゴ画像 -->
+      <img src="https://cdn.glitch.global/d6b52f0f-967d-4d53-8d7f-3cfb840bae62/AI%20Supprot%20System%20(1000%20x%20200%20px).png?v=1740035748637" 
+           alt="AI Support System Logo">
+    </div>
+  </header>
+
+  <div class="container">
+    <!-- サイドバー -->
+    <div id="sidebar-container"></div>
+    <!-- サイドバーローダー -->
+    <script defer src="/sidebar-loader.js"></script>
+    
+    <main class="content">
+      <h1>AI支援システム (Basic版)</h1>
+      <p>
+        このBasic版では、以下の主要な機能のみご利用いただけます。<br>
+        目標設定、行動計画、事前アンケートの見立て、ペルソナ選定、コンセプト設計<br>
+        その他の機能はPro版へのアップグレードでご利用いただけます。
+      </p>
+
+      <div class="items-container">
+        <!-- 有効な機能（リンク有効） -->
+        <a href="coaching/goal-setting.html" class="item" data-category="coaching" data-feature="goal-setting">
+          <h3>目標設定</h3>
+          <p>ユーザーの価値観やビジョンを<br>もとに目標を設定します。</p>
+        </a>
+        <a href="coaching/action-plan.html" class="item" data-category="coaching" data-feature="action-plan">
+          <h3>行動計画</h3>
+          <p>目標達成のための具体的な<br>行動ステップを計画します。</p>
+        </a>
+        <a href="coaching/pre-survey.html" class="item" data-category="coaching" data-feature="pre-survey">
+          <h3>事前アンケートの見立て</h3>
+          <p>アンケート結果を分析し、<br>改善ポイントを明確にします。</p>
+        </a>
+        <a href="#" class="item disabled" data-category="coaching" data-feature="session-assist">
+          <h3>本セッションアシスト</h3>
+          <p>クライアントとの本セッションの<br>見立てをサポートしてくれます。</p>
+        </a>
+        <a href="#" class="item disabled" data-category="coaching" data-feature="daily-feedback">
+          <h3>日報フィードバック</h3>
+          <p>今日の振り返りから明日へ向けた<br>フィードバックをAIからもらえます。</p>
+        </a>        
+        
+        <a href="marketing/persona.html" class="item" data-category="marketing" data-feature="persona">
+          <h3>ペルソナ選定</h3>
+          <p>ターゲットとなる理想的な<br>顧客像を明確にします。</p>
+        </a>
+        <a href="marketing/concept-design.html" class="item" data-category="marketing" data-feature="concept-design">
+          <h3>コンセプト設計</h3>
+          <p>市場に響く商品コンセプトを<br>構築します。</p>
+        </a>
+
+        <!-- 利用不可の機能（グレー表示、クリックでアラート） -->
+
+        <a href="#" class="item disabled" data-category="marketing" data-feature="catchphrase">
+          <h3>キャッチコピー作成</h3>
+          <p>商品の魅力を最大限に伝える<br>キャッチコピーを作成します。</p>
+        </a>
+        <a href="#" class="item disabled" data-category="marketing" data-feature="appointment-copy">
+          <h3>アポイント獲得</h3>
+          <p>効果的なライティングで<br>アポイント獲得を支援します。</p>
+        </a>
+        <a href="marketing/profile-copy.html" class="item disabled" data-category="marketing" data-feature="profile-copy">
+          <h3>プロフィール作成</h3>
+          <p>ターゲットに安心感と権威性を示す<br>プロフィールコピーを作成します。</p>
+        </a>
+        <a href="marketing/lp-session.html" class="item disabled" data-category="marketing" data-feature="lp-session">
+          <h3>LP作成（FS用）</h3>
+          <p>ターゲットをFSへ誘導する<br/>LPのコピーを作成します。</p>
+        </a>
+        <a href="#" class="item disabled beta" data-category="marketing" data-feature="email-copy">
+          <h3>メール作成（β版）</h3>
+          <p>今後リリース予定の機能です。</p>
+        </a>
+
+        <a href="#" class="item disabled" data-category="seminar" data-feature="seminar-title">
+          <h3>セミナータイトル</h3>
+          <p>受講者を惹きつける<br>タイトルを提案します。</p>
+        </a>
+        <a href="#" class="item disabled" data-category="seminar" data-feature="seminar-post">
+          <h3>セミナー投稿文</h3>
+          <p>受講者に魅力を伝えるための<br>投稿文を作成します。</p>
+        </a>
+        <a href="#" class="item disabled" data-category="seminar" data-feature="seminar-structure">
+          <h3>セミナー構成</h3>
+          <p>セミナーの流れと内容を計画し、<br>成功に導きます。</p>
+        </a>
+        <a href="#" class="item disabled" data-category="seminar" data-feature="step-mail">
+          <h3>ステップメール</h3>
+          <p>セミナー参加予定者の来場率を<br>高めるメールを作成します。</p>
+        </a>
+
+        <a href="#" class="item disabled" data-category="sns" data-feature="feed-post">
+          <h3>フィード投稿</h3>
+          <p>エンゲージメントを高める<br>投稿内容を提案します。</p>
+        </a>
+        <a href="#" class="item disabled" data-category="sns" data-feature="free-content">
+          <h3>フリーコンテンツ</h3>
+          <p>価値ある無料コンテンツで<br>リード獲得を支援します。</p>
+        </a>
+        <a href="#" class="item disabled beta" data-category="sns" data-feature="video-script">
+          <h3>動画台本（β版）</h3>
+          <p>今後リリース予定の機能です。</p>
+        </a>
+        <a href="#" class="item disabled beta" data-category="sns" data-feature="line-step-mail">
+          <h3>LINEステップメール（β版）</h3>
+          <p>今後リリース予定の機能です。</p>
+        </a>
+      </div>
+    </main>
+  </div>
+
+  <!-- Basic版で使えない機能をクリックしたら案内を表示 -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.item.disabled').forEach(el => {
+        el.addEventListener('click', event => {
+          event.preventDefault();
+          alert('この機能をご利用になりたい場合は、Pro版へのアップグレードをお願いします。\n「その他>マイページ>プランのアップグレードはこちら」からできます。');
+        });
+      });
+    });
+  </script>
+</body>
+</html>

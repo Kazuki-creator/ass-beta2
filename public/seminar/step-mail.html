@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ステップメール作成</title>
+  <link rel="prefetch" href="../sidebar.html">
+  <link rel="stylesheet" href="../style.css">
+  <script defer src="/sidebar-loader.js"></script>
+  <script type="module" src="step-mail.js"></script>
+</head>
+<body>
+  <!-- 共通ヘッダー -->
+  <header class="header">
+    <div class="logo">
+      <img src="https://cdn.glitch.global/d6b52f0f-967d-4d53-8d7f-3cfb840bae62/AI%20Supprot%20System%20(1000%20x%20200%20px).png?v=1740035748637" alt="AI Support System Logo">
+    </div>
+  </header>
+
+  <div class="container">
+    <!-- 共通サイドバー -->
+    <div id="sidebar-container"></div>
+    <!-- ↓ここだけを入れ替え（インライン fetch を消して loader を読む） -->
+    <script defer src="/sidebar-loader.js"></script>
+    
+    <!-- メインコンテンツ -->
+    <main class="content">
+      <div class="main-container">
+        <h1>【ステップメール作成】</h1>
+        <p>以下の項目から入力し、セミナー参加率を最大化するためのステップメール（全4通）の案を作成します。</p>
+        
+        <!-- 入力フォーム -->
+        <form id="step-mail-form">
+          <label for="seminarTitle">① セミナーのタイトル</label>
+          <textarea id="seminarTitle" rows="2" placeholder="例：未来を切り拓くキャリアアップセミナー"></textarea>
+          <label for="seminarDatetime">② セミナーの日時（例：2025.5.3(土)20:00~21:30）</label>
+          <textarea id="seminarDatetime" rows="2" placeholder="例：2025.5.3(土)20:00~21:30"></textarea>
+          <label for="seminarMethod">③ セミナーの開催方法（例：ZOOMオンライン開催）</label>
+          <textarea id="seminarMethod" rows="2" placeholder="例：ZOOMオンライン開催"></textarea>
+          <label for="targetInfo">④ ターゲット層とその具体的な悩み・願望</label>
+          <textarea id="targetInfo" rows="2" placeholder="例：20代後半～30代前半の社会人、キャリアに不安があるなど"></textarea>
+          <label for="benefit">⑤ セミナー参加の具体的なベネフィット</label>
+          <textarea id="benefit" rows="2" placeholder="例：年収アップ、職場での評価向上、コミュニケーションスキルの習得"></textarea>
+          <label for="specialOffer">⑥ セミナー参加の特典</label>
+          <textarea id="specialOffer" rows="2" placeholder="例：通常15,000円の個別相談が無料、キャリア適正診断シートプレゼント"></textarea>
+          <div class="button-container">          
+            <button id="step-mail-submit-btn" class="button analyze-button" type="submit">ステップメールを作る！</button>
+          </div>
+        </form>
+        
+        <!-- 進捗バー -->
+        <div class="progress-container">
+          <div class="progress-steps">
+            <div class="progress-bar">
+              <div class="progress-bar-fill" id="progress-fill"></div>
+            </div>
+            <div class="progress-step" id="step-1"><div class="step-dot"></div><div class="step-label">データ解析</div></div>
+            <div class="progress-step" id="step-2"><div class="step-dot"></div><div class="step-label">メール案作成</div></div>
+            <div class="progress-step" id="step-3"><div class="step-dot"></div><div class="step-label">最適化</div></div>
+            <div class="progress-step" id="step-4"><div class="step-dot"></div><div class="step-label">完了</div></div>
+          </div>
+        </div>
+
+        <!-- 出力結果 -->
+        <div id="output-container" style="display: none;">
+          <h3>生成されたステップメール案</h3>
+          <div id="output"></div>
+          <div class="clipboard-container" style="display: none;">
+            <button class="copy-button" id="copy-btn">クリップボードにコピーする</button>
+            <span class="copy-success" id="copy-success" style="display:none; margin-left:1em; color:#8bc34a;">コピーしました！</span>
+          </div>
+        </div>
+
+        <!-- メインページへ戻るボタン -->
+        <div class="main-return-button-area">
+          <a href="#" id="return-home" class="main-return-button">メインページへ戻る</a>
+        </div>  
+      </div>
+    </main>
+  </div>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>AI支援システム (<%= plan %>版)</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <!-- ヘッダーにロゴを表示 -->
+  <header class="header">
+    <div class="logo">
+      <img src="https://cdn.glitch.global/d6b52f0f-967d-4d53-8d7f-3cfb840bae62/AI%20Supprot%20System%20(1000%20x%20200%20px).png?v=1740035748637" alt="AI Support System Logo" />
+    </div>
+  </header>
+
+  <!-- サイドバー -->
+  <%- include('partials/sidebar') %>
+
+  <div class="container">
+    <main class="content">
+      <h1>AI支援システム (<%= plan %>版)</h1>
+      <p>
+        <% if (plan === 'Basic') { %>
+          このBasic版では主要機能のみご利用いただけます。追加機能はPro版へのアップグレードで解放されます。
+        <% } else { %>
+          このPro版では全機能をご利用いただけます。
+        <% } %>
+      </p>
+
+      <div class="items-container">
+        <% 
+          // 全機能一覧
+          const features = [
+            // Coaching
+            { href: 'coaching/goal-setting.html',      title: '目標設定',             desc: 'ユーザーの価値観やビジョンを<br/>もとに目標を設定します。',        feature: 'goal-setting',      category:'coaching' },
+            { href: 'coaching/action-plan.html',       title: '行動計画',             desc: '目標達成のための具体的な<br/>行動ステップを計画します。',  feature: 'action-plan',       category:'coaching' },
+            { href: 'coaching/pre-survey.html',        title: '事前アンケートの見立て', desc: 'アンケート結果を分析し、<br/>改善ポイントを明確にします。',feature: 'pre-survey',        category:'coaching' },
+
+            // Marketing
+            { href: 'marketing/persona.html',          title: 'ペルソナ選定',         desc: 'ターゲットとなる理想的な<br/>顧客像を明確にします。',        feature: 'persona',           category:'marketing' },
+            { href: 'marketing/concept-design.html',   title: 'コンセプト設計',       desc: '市場に響く商品コンセプトを<br/>構築します。',                  feature: 'concept-design',    category:'marketing' },
+            { href: 'marketing/catchphrase.html',      title: 'キャッチコピー作成',   desc: '商品の魅力を最大限に伝える<br/>キャッチコピーを作成します。',feature: 'catchphrase',       category:'marketing' },
+            { href: 'marketing/appointment-copy.html', title: 'アポイント獲得コピー', desc: '効果的なライティングで<br/>アポイント獲得を支援します。',feature: 'appointment-copy',  category:'marketing' },
+            { href: 'marketing/lp.html',               title: 'LP作成',               desc: '(β版) 今後のリリース予定',      feature: 'lp',                 category:'marketing' },
+            { href: 'marketing/email-copy.html',       title: 'メール作成',           desc: '(β版) 今後のリリース予定',      feature: 'email-copy',         category:'marketing' },
+
+            // Seminar
+            { href: 'seminar/seminar-structure.html',  title: 'セミナー構成',         desc: 'セミナーの流れと内容を計画し、<br/>成功に導きます。',            feature: 'seminar-structure', category:'seminar' },
+            { href: 'seminar/seminar-title.html',      title: 'セミナータイトル',     desc: '受講者を惹きつける<br/>タイトルを提案します。',        feature: 'seminar-title',     category:'seminar' },
+            { href: 'seminar/seminar-post.html',       title: 'セミナー投稿文',       desc: '受講者に魅力を伝えるための<br/>投稿文を作成します。',        feature: 'seminar-post',      category:'seminar' },
+            { href: 'seminar/step-mail.html',          title: 'ステップメール',       desc: 'セミナー参加予定者の来場率を<br/>高めるメールを作成します。',feature: 'step-mail',         category:'seminar' },
+
+            // SNS
+            { href: 'sns/feed-post.html',              title: 'フィード投稿作成',     desc: 'エンゲージメントを高める<br/>投稿内容を提案します。',        feature: 'feed-post',         category:'sns' },
+            { href: 'sns/free-content.html',           title: 'フリーコンテンツ作成', desc: '価値ある無料コンテンツで<br/>リード獲得を支援します。',      feature: 'free-content',      category:'sns' },
+            { href: 'sns/video-script.html',           title: '動画台本作成',         desc: '動画用のシナリオを<br/>提案します。',                  feature: 'video-script',      category:'sns' },
+            { href: 'sns/line-step-mail.html',         title: 'LINEステップメール',   desc: 'LINEでのステップ配信を<br/>支援します。',                feature: 'line-step-mail',    category:'sns' }
+          ];
+
+          // Basic版で有効な機能キー
+          const basicAllowed = ['goal-setting','action-plan','pre-survey','persona','concept-design'];
+
+          features.forEach(f => {
+            const disabled = (plan === 'Basic') && !basicAllowed.includes(f.feature);
+        %>
+          <a
+            href="<%= disabled ? 'javascript:void(0)' : f.href %>"
+            class="item <%= disabled ? 'disabled' : '' %>"
+            data-category="<%= f.category %>"
+            <%= disabled ? 'onclick="alert(\'Pro版にアップグレードでご利用いただけます\')"' : '' %>
+          >
+            <h3><%= f.title %></h3>
+            <p><%- f.desc %></p>
+          </a>
+        <% }) %>
+      </div>
+    </main>
+  </div>
+
+  <!-- クライアント側ロジック -->
+  <script src="/js/sidebar.js" defer></script>
+  <script src="/script.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LP作成（FS用）</title>
+  <link rel="prefetch" href="../sidebar.html">
+  <link rel="stylesheet" href="../style.css">
+  <script defer src="/sidebar-loader.js"></script>
+  <script type="module" src="./lp-session.js"></script>
+</head>
+<body>
+  <header class="header">
+    <div class="logo">
+      <img src="https://cdn.glitch.global/d6b52f0f-967d-4d53-8d7f-3cfb840bae62/AI%20Supprot%20System%20(1000%20x%20200%20px).png?v=1740035748637" alt="AI Support System Logo">
+    </div>
+  </header>
+
+  <div class="container">
+    <div id="sidebar-container"></div>
+
+    <main class="content">
+      <div class="main-container">
+        <h1>【体験セッション用LP作成】</h1>
+        <p>お試しセッションへ誘導するための魅力的なLPコピーを作成します。<br>※出力には時間がかかります。</p>
+
+        <form id="lp-session-form">
+          <label for="persona">① ペルソナ情報（ペルソナ選定機能で出力した結果を貼ってください）</label>
+          <textarea id="persona" rows="4" placeholder="ターゲットペルソナ設定  
+名前（仮名）：佐藤 健太（さとう けんた）  
+性別・年齢：男性・28歳  
+職業・役職：IT企業営業職（中途入社3年目）／チームリーダー候補  
+年収：約450万円  
+家族構成：一人暮らし（実家は地方、上京して就職）  
+
+---
+
+
+普段利用している情報源  
+- SNS：Twitter（ビジネススキル系アカウントをフォロー）、LinkedIn（キャリア情報収集）  
+- Webメディア：NewsPicks、キャリア系YouTube（例：メンタリストDaiGoの自己啓発動画）  
+- 書籍：ビジネス書・心理学関連（『7つの習慣』『エッセンシャル思考』などを読破）  
+
+---
+
+
+日々感じている課題・悩み  
+- キャリアの方向性が不透明：  
+  「営業職で数字は達成できるが、将来的に自分が本当にやりたい仕事かわからない。スキルアップしても『年収600万円の壁』を越えられる気がしない」  
+- 自己投資の効果実感不足：  
+  「セミナーや資格取得を試みるが、漠然としていて成果に直結しない。時間とお金の無駄に感じることもある」  
+- 同世代との比較焦り：  
+  「SNSで起業や転職成功者の話を見ると、『自分はこのままでいいのか？』と不安になる」  
+
+---
+
+
+興味を持つ理由・きっかけ  
+- 無料セッションの心理的ハードル低さ：  
+  「有料サービスはリスクが高いが、無料なら試せる。コーチングに興味はあったが、初めてでも安心」  
+- 価値観の明確化ニーズ：  
+  「自己分析ツールは試したが表面的だった。『叶えたい夢』を深掘りできる点に共感」  
+- キャリアアップへの即効性期待：  
+  「営業スキル以外の強み（例：マネジメント適性）を見つけ、昇進や転職に活かしたい」  
+
+---
+
+
+購入後に得たい具体的なベネフィット  
+
+1. 自己理解の深化：  
+   「『営業職以外で自分に合う仕事』の具体案（例：人事・プロダクトマネージャー）を得る」  
+
+2. 行動プランの明確化：  
+   「3ヶ月単位で実践可能な目標（例：社内公募への応募、副業開始）を設定できる」  
+
+3. 収アップへの道筋：  
+   「年収600万円達成に必要なスキル（例：プレゼン力、データ分析）の優先順位がわかる」  
+
+---
+
+
+ペルソナのリアルな行動例  
+- 休日にコーチング体験セッションを予約し、事前に「自己分析ノート」を作成する  
+- セッション後、LinkedInでキャリアチェンジ成功者のインタビューを検索し、情報収集を加速  
+- 無料セッションで信頼できたら、有料プランへの継続を検討
+                                                       "></textarea>
+
+          <label for="recruitment">② 募集人数（例：毎月5名募集）</label>
+          <textarea id="recruitment" rows="2" placeholder="毎月5名募集 など"></textarea>
+
+          <label for="profile">③ あなたのプロフィール</label>
+          <textarea id="profile" rows="3" placeholder="熊本悠介
+普通の会社員をしていましたが、
+コーチングを学んで出世も収入アップも達成しました。
+その経験を元にこのような活動をしています。
+
+これまでのクライアントもキャリアアップに成功しています
+"></textarea>
+
+          <label for="episode">④ 実例エピソード（お客様の声）</label>
+          <textarea id="episode" rows="4" placeholder="田中太郎
+3時間のお試しセッションでやりたいことが見つかりました！
+
+山田聡
+本当の目標が見つかりスッキリしています！
+          "></textarea>
+
+          <div class="button-container">
+            <button id="lp-session-submit-btn" class="button analyze-button">LPコピーを作る！</button>
+          </div>
+        </form>
+
+        <div class="progress-container">
+          <div class="progress-steps">
+            <div class="progress-bar">
+              <div class="progress-bar-fill" id="progress-fill"></div>
+            </div>
+            <div class="progress-step" id="step-1">
+              <div class="step-dot"></div>
+              <div class="step-label">データ解析</div>
+            </div>
+            <div class="progress-step" id="step-2">
+              <div class="step-dot"></div>
+              <div class="step-label">LP構築中</div>
+            </div>
+            <div class="progress-step" id="step-3">
+              <div class="step-dot"></div>
+              <div class="step-label">最適化</div>
+            </div>
+            <div class="progress-step" id="step-4">
+              <div class="step-dot"></div>
+              <div class="step-label">完了</div>
+            </div>
+          </div>
+        </div>
+
+        <div id="output-container" style="display: none;">
+          <h3>生成されたLPコピー</h3>
+          <div id="output"></div>
+          <div class="clipboard-container" style="margin-top:1em;">
+            <button class="copy-button" id="copy-btn">クリップボードにコピーする</button>
+            <span class="copy-success" id="copy-success" style="display:none; margin-left: 1em; color:#8bc34a;">コピーしました！</span>
+          </div>
+        </div>
+
+        <div class="main-return-button-area">
+          <a href="#" id="return-home" class="main-return-button">メインページへ戻る</a>
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

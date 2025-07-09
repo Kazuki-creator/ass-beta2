@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>目標設定</title>
+  <link rel="prefetch" href="/sidebar.html">
+  <link rel="stylesheet" href="../style.css">
+  <script type="module" src="./goal-setting.js"></script>
+</head>
+<body>
+  <!-- 共通ヘッダー -->
+  <header class="header">
+    <div class="logo">
+      <img src="https://cdn.glitch.global/d6b52f0f-967d-4d53-8d7f-3cfb840bae62/AI%20Supprot%20System%20(1000%20x%20200%20px).png?v=1740035748637" alt="AI Support System Logo">
+    </div>
+  </header>
+
+  <div class="container">
+    <!-- 共通サイドバー -->
+    <div id="sidebar-container"></div>
+    <script defer src="/sidebar-loader.js"></script>
+    <main class="content">
+      <div class="main-container">
+        <h1>【目標設定】</h1>
+        <p>
+          ユーザーの価値観や理想の未来をもとに、目標を具体的に設定するための質問です。<br>
+          リラックスして、自分の思うままに答えてみてください！
+        </p>
+
+        <!-- 入力フォーム -->
+        <form id="goal-setting-form">
+          <label for="value">
+            ① あなたの人生において大切な価値観を教えてください<br>
+            (例：ワクワク、好奇心、愛、つながり、貢献、成長、独自性、自由、責任感)
+          </label>
+          <textarea id="value" rows="3" placeholder="ここに回答を入力"></textarea>
+          <br><br>
+
+          <label for="future">
+            ② あなたの理想の将来像を教えてください<br>
+            (例：好きな場所でやりたい仕事をして、家族とともにのんびり暮らす)
+          </label>
+          <textarea id="future" rows="3" placeholder="ここに回答を入力"></textarea>
+          <br><br>
+
+          <label for="current">
+            ③ 現在の状況・リソース<br>
+            (例：会社員、副業あり、貯金50万円、使える時間2時間/日、人脈なし)
+          </label>
+          <textarea id="current" rows="3" placeholder="ここに回答を入力"></textarea>
+          <br><br>
+
+          <label for="strength">
+            ④ あなたの強み・得意なことは何ですか？<br>
+            (例：交渉、アイデア出し、文章作成など)
+          </label>
+          <textarea id="strength" rows="3" placeholder="ここに回答を入力"></textarea>
+          <br><br>
+
+          <label for="ngList">
+            ⑤ やりたくないこと（NGリスト）<br>
+            (例：細かい作業、一人で黙々とする作業)
+          </label>
+          <textarea id="ngList" rows="3" placeholder="ここに回答を入力"></textarea>
+          <br><br>
+
+          <label for="achievedImage">
+            ⑥ 目標達成後のイメージ<br>
+            (例：自由に旅しながら仕事、仲間とプロジェクトを進める、毎日好きな時間に働く)
+          </label>
+          <textarea id="achievedImage" rows="3" placeholder="ここに回答を入力"></textarea>
+          <br><br>
+
+          <label for="skills">
+            ⑦ 目標達成のために身につけたいスキルは？<br>
+            (例：マーケティング、資金調達、マネジメント、営業、プログラミング)
+          </label>
+          <textarea id="skills" rows="3" placeholder="ここに回答を入力"></textarea>
+          <br><br>
+
+          <label for="obstacles">
+            ⑧ 目標達成を邪魔しそうなこと・不安なことは？<br>
+            (例：時間不足、資金不足、協力者不足)
+          </label>
+          <textarea id="obstacles" rows="3" placeholder="ここに回答を入力"></textarea>
+          <br><br>
+
+          <button type="submit" id="goal-setting-submit-btn" class="analyze-button">目標を設定する！</button>
+        </form>
+
+        <!-- 進捗バー -->
+        <div class="progress-container">
+          <div class="progress-steps">
+            <div class="progress-bar">
+              <div class="progress-bar-fill" id="progress-fill"></div>
+            </div>
+            <div class="progress-step" id="step-1">
+              <div class="step-dot"></div>
+              <div class="step-label">データ解析</div>
+            </div>
+            <div class="progress-step" id="step-2">
+              <div class="step-dot"></div>
+              <div class="step-label">目標プラン作成</div>
+            </div>
+            <div class="progress-step" id="step-3">
+              <div class="step-dot"></div>
+              <div class="step-label">最適化</div>
+            </div>
+            <div class="progress-step" id="step-4">
+              <div class="step-dot"></div>
+              <div class="step-label">完了</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 出力結果 -->
+        <div id="output-container" style="display: none;">
+          <h3>生成された目標</h3>
+          <div id="output"></div>
+          <!-- クリップボードコピー＆ボタンコンテナ -->
+          <div class="clipboard-container">
+            <button class="copy-button" id="copy-btn">クリップボードにコピーする</button>
+            <div class="copy-success" id="copy-success">コピーしました！</div>
+            <a href="action-plan.html" class="analyze-button" id="move-to-action-plan">行動計画に移る</a>
+          </div>
+        </div>        
+
+        <!-- メインページに戻るボタン -->
+        <div class="main-return-button-area">
+          <a href="#" id="return-home" class="main-return-button">メインページへ戻る</a>
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

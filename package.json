@@ -1,0 +1,23 @@
+{
+  "name": "demo-project",
+  "version": "1.0.0",
+  "engines": {
+    "node": "14.x"
+  },
+  "description": "AI支援システム デモプロジェクト",
+  "license": "MIT",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "@dqbd/tiktoken": "^1.0.21",
+    "@notionhq/client": "^2.3.0",
+    "axios": "^0.27.2",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "ejs": "^3.1.8",
+    "express": "^4.21.2",
+    "nodemailer": "^7.0.3"
+  }
+}

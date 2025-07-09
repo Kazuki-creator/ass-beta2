@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <link rel="prefetch" href="../sidebar.html">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ペルソナ選定</title>
+  <link rel="stylesheet" href="../style.css">
+  <script defer src="/sidebar-loader.js"></script>
+  <script type="module" src="./persona.js"></script>
+</head>
+<body>
+  <!-- 共通ヘッダー -->
+  <header class="header">
+    <div class="logo">
+      <img src="https://cdn.glitch.global/d6b52f0f-967d-4d53-8d7f-3cfb840bae62/AI%20Supprot%20System%20(1000%20x%20200%20px).png?v=1740035748637" alt="AI Support System Logo">
+    </div>
+  </header>
+
+  <div class="container">
+    <!-- 共通サイドバー -->
+    <div id="sidebar-container"></div>
+    
+    <main class="content">
+      <div class="main-container">
+        <h1>【ペルソナ選定】</h1>
+        <p>ユーザーからの入力情報を元に、商品/サービスを購入してくれる確率の高い顧客のペルソナ像を作成します。</p>
+        
+        <!-- 入力フォーム -->
+        <form id="persona-form">
+          <label for="productName">
+            ① 商品/サービスの名称<br>
+            (例：目標達成のコーチング、転職支援プログラム、恋愛コンサルタント)
+          </label>
+          <textarea id="productName" rows="2" placeholder="ここに回答を入力"></textarea>
+          <br><br>
+          
+          <label for="productDetail">
+            ② 商品/サービスの具体的な内容や特徴<br>
+            (例：価値観を深ぼって叶えたい夢を見つける、副業や転職支援を提供する)
+          </label>
+          <textarea id="productDetail" rows="2" placeholder="ここに回答を入力"></textarea>
+          <br><br>
+          
+          <label for="price">
+            ③ 価格帯（例：半年間で40万円）
+          </label>
+          <textarea id="price" rows="2" placeholder="ここに回答を入力"></textarea>
+          <br><br>
+          
+          <label for="targetDescription">
+            ④ どんなターゲットの役に立ちたいですか？<br>
+            (例：20代〜30代前半の会社員、副業や転職に関心がある人、子育て中のママさん)
+          </label>
+          <textarea id="targetDescription" rows="2" placeholder="ここに回答を入力"></textarea>
+          <br><br>
+          
+          <label for="benefit">
+            ⑤ 顧客が商品/サービスを利用して解決できる課題や得られるメリット<br>
+            (例：やりたい仕事が見つからない、キャリアの方向性が分からない、年収を上げたいなど)
+          </label>
+          <textarea id="benefit" rows="2" placeholder="ここに回答を入力"></textarea>
+          <br><br>
+          
+          <label for="trend">
+            ⑥ 購入者が普段関心を持ちそうなテーマ・トレンド<br>
+            (例：副業、自己投資、キャリアアップ、転職、副収入)
+          </label>
+          <textarea id="trend" rows="2" placeholder="ここに回答を入力"></textarea>
+          <br><br>
+          
+          <div class="button-container">
+            <button type="submit" id="persona-submit-btn" class="analyze-button">ペルソナを作る！</button>
+          </div>
+        </form>
+        
+        <!-- 進捗バー -->
+        <div class="progress-container">
+          <div class="progress-steps">
+            <div class="progress-bar">
+              <div class="progress-bar-fill" id="progress-fill"></div>
+            </div>
+            <div class="progress-step" id="step-1">
+              <div class="step-dot"></div>
+              <div class="step-label">データ解析</div>
+            </div>
+            <div class="progress-step" id="step-2">
+              <div class="step-dot"></div>
+              <div class="step-label">ペルソナ案作成</div>
+            </div>
+            <div class="progress-step" id="step-3">
+              <div class="step-dot"></div>
+              <div class="step-label">最適化</div>
+            </div>
+            <div class="progress-step" id="step-4">
+              <div class="step-dot"></div>
+              <div class="step-label">完了</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 出力結果 -->
+        <div id="output-container" style="display: none;">
+          <h3>生成されたペルソナ</h3>
+          <div id="output"></div>
+          <!-- クリップボードコピー用コンテナ -->
+          <div class="clipboard-container" style="margin-top:1em;">
+            <button class="copy-button" id="copy-btn">クリップボードにコピーする</button>
+            <span class="copy-success" id="copy-success" style="display:none; margin-left: 1em; color:#8bc34a;">コピーしました！</span>
+          </div>
+        </div>
+
+        <!-- メインページへ戻るボタン用コンテナ -->
+        <div class="main-return-button-area">
+          <a href="#" id="return-home" class="main-return-button">メインページへ戻る</a>
+        </div>
+
+      </div>
+    </main>
+  </div>
+  
+</body>
+</html>

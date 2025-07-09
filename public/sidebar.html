@@ -1,0 +1,52 @@
+<!-- public/sidebar.html -->
+<div class="sidebar">
+  <h2>ホーム</h2>
+  <ul>
+    <li><a href="/index.html" class="sidebar-link">トップページ</a></li>
+  </ul>
+  <h2>ジャンルから探す</h2>
+  <ul>
+    <li><a data-cat="coaching" class="sidebar-link">コーチング支援</a></li>
+    <li><a data-cat="marketing" class="sidebar-link">マーケティング支援</a></li>
+    <li><a data-cat="seminar" class="sidebar-link">セミナー支援</a></li>
+    <li><a data-cat="sns" class="sidebar-link">SNS支援</a></li>
+  </ul>
+  <h2>その他</h2>
+  <ul>
+    <li><a href="/mypage.html" class="sidebar-link">マイページ</a></li>
+    <li><a href="https://recurrent-edu.jp/" target="_blank" class="sidebar-link">会社概要</a></li>
+    <li><a href="https://www.facebook.com/groups/ai.support.system/" target="_blank" class="sidebar-link">限定コミュニティ</a></li>
+    <li><a href="/faq.html" class="sidebar-link">お問い合わせ（FAQ）</a></li>
+    <li><a href="/logout" class="sidebar-link">ログアウト</a></li>
+  </ul>
+</div>
+
+<script>
+// ■ プランに応じたカテゴリリンク生成 & 選択中ハイライト
+;(function(){
+  // 1. クッキーから userSession を取得
+  const kv = document.cookie.split('; ').find(v=>v.startsWith('userSession='));
+  let plan = 'Basic';
+  if(kv){
+    try{
+      plan = JSON.parse(decodeURIComponent(kv.split('=')[1])).plan;
+    }catch{}
+  }
+
+  // 2. カテゴリリンク (<a data-cat="...">) を書き換え
+  document.querySelectorAll('.sidebar [data-cat]').forEach(a=>{
+    const cat = a.getAttribute('data-cat');
+    // プランに応じてベースURLを選択
+    const base = (plan==='Pro') ? '/index.html' : '/basic.html';
+    a.href = `${base}?category=${encodeURIComponent(cat)}`;
+  });
+
+  // 3. URLパラメータ ?category= に応じて .active を付与
+  const params = new URLSearchParams(location.search);
+  const cur = params.get('category');
+  if(cur){
+    const sel = document.querySelector(`.sidebar [data-cat="${cur}"]`);
+    if(sel) sel.classList.add('active');
+  }
+})();
+</script>

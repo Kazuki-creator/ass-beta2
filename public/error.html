@@ -1,0 +1,49 @@
+<!-- public/error.html -->
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>エラー - AI支援システム</title>
+  <link rel="stylesheet" href="./style.css"/>
+  <style>
+    .error-container {
+      max-width: 600px;
+      margin: 150px auto;
+      padding: 30px;
+      background-color: #252C48;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      text-align: center;
+    }
+    .error-container h1 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+    .error-container p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+    }
+    .error-container .return-button {
+      display: inline-block;
+      padding: 12px 24px;
+      background-color: #6E44FF;
+      color: #FFFFFF;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+    .error-container .return-button:hover {
+      background-color: #5A3BD8;
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+<body>
+  <div class="error-container">
+    <h1>ただいま不具合が発生しております</h1>
+    <p>恐れ入りますが、しばらく時間をおいて再度お試しください。</p>
+    <a href="/login.html" class="return-button">ログイン画面へ戻る</a>
+  </div>
+</body>
+</html>

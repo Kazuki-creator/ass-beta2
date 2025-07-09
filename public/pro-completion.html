@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>登録完了 - AI支援システム</title>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    /* コンテナ共通 */
+    .login-container {
+      max-width: 500px;
+      margin: 100px auto;
+      padding: 30px;
+      background-color: #252C48;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      text-align: center;
+    }
+    .login-container img {
+      max-width: 100%;
+      height: auto;
+      margin-bottom: 20px;
+    }
+    .login-container h1 {
+      margin-bottom: 20px;
+      font-size: 2rem;
+      color: #FFFFFF;
+    }
+    .login-container h2 {
+      margin-bottom: 20px;
+      font-size: 1.5rem;
+      color: #FFFFFF;
+    }
+    .login-container p {
+      margin-bottom: 20px;
+      font-size: 1.1rem;
+      line-height: 1.4;
+      color: #CCCCCC;
+    }
+    .login-container a.analyze-button {
+      width: 50%;
+      padding: 18px;
+      background-color: #FF8c00;
+      border: none;
+      border-radius: 4px;
+      color: #FFFFFF;
+      font-size: 1.1rem;
+      cursor: pointer;
+      display: inline-block;
+      text-decoration: none;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+      margin-top: 30px;
+    }
+    .login-container a.analyze-button:hover {
+      background-color: #F57C00;
+      transform: translateY(-2px);
+    }
+    #user-info p,
+    #update-status {
+      color: #AAAAAA;
+      margin: 8px 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <img
+      src="https://cdn.glitch.global/d6b52f0f-967d-4d53-8d7f-3cfb840bae62/AI%20Supprot%20System%20(1000%20x%20200%20px).png?v=1740035748637"
+      alt="AI Support System Logo"
+    />
+    <h1>お申込みありがとうございます！</h1>
+    <h2>ユーザー登録が完了しました。</h2>
+    <p>Pro版がご利用いただけるようになりました。<br/>以下からご利用ください。</p>
+    <a href="/index.html" id="return-home" class="analyze-button">トップページへ戻る</a>
+    <!-- ユーザー情報表示用 -->
+    <div id="user-info" style="margin-top:20px;"></div>
+    <!-- 更新ステータス表示用 -->
+    <div id="update-status" style="margin-top:20px;"></div>
+  </div>
+
+  <script>
+    (async () => {
+      // 1) pro-checkout.html の onSuccess/onProcessing で localStorage に保存した情報を取得
+      const info = JSON.parse(localStorage.getItem('subscriptionInfo') || '{}');
+      const { name = '—', email = '—', plan = '—' } = info;
+
+      // 2) 画面に表示
+      document.getElementById('user-info').innerHTML = `
+        <p>お名前：${name}</p>
+        <p>メール：${email}</p>
+        <p>プラン：${plan === 'monthly' ? '月額プラン' : '年間プラン'}</p>
+      `;
+
+      // 3) サーバーへ更新リクエストを送信
+      try {
+        const res = await fetch('/api/subscription-complete', {
+          method:  'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body:    JSON.stringify({ email, name, plan })
+        });
+        if (res.ok) {
+          document.getElementById('update-status').textContent = 'Notion データベースを更新しました。';
+        } else {
+          document.getElementById('update-status').textContent = '更新に失敗しました。';
+        }
+      } catch (err) {
+        console.error('Update error:', err);
+        document.getElementById('update-status').textContent = '更新処理中にエラーが発生しました。';
+      }
+    })();
+  </script>
+</body>
+</html>
